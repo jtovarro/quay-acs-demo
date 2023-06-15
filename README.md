@@ -25,7 +25,7 @@ oc new-project quay-enterprise
 ```
 
 The standard pattern for configuring unmanaged components is:
-- 1) Create a config.yaml configuration file with the appropriate settings
+  1) Create a config.yaml configuration file with the appropriate settings
 
 ```
 mkdir ~/quay-demo
@@ -53,13 +53,13 @@ DISTRIBUTED_STORAGE_PREFERENCE:
 EOF
 ```
 
-- 2) Create a Secret using the configuration file.
+  2) Create a Secret using the configuration file.
 
 ```
 oc create secret generic --from-file config.yaml=./conf-aws-storage.yaml config-bundle-secret
 ```
 
-- 3) Deploy the Quay Registry CRD indentifying the unmanaged components, in this case the Object Storage.
+  3) Deploy the Quay Registry CRD indentifying the unmanaged components, in this case the Object Storage.
 
 #### __NOTE:__ It is possible to disable monitoring and horizontal pod autoscaler for example if you want to reduce cpu usage for the demo.
 
