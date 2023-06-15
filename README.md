@@ -349,7 +349,7 @@ quay-enterprise   quay-registry-quay-mirror   Deployment/quay-registry-quay-mirr
 
 [2] [Repository mirroring](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/manage_red_hat_quay/repo-mirroring-in-red-hat-quay#arch-mirroring-intro)
 
-[3] [ACS Install] (https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_security_for_kubernetes/3.71/html/installing/install-ocp-operator#install-secured-cluster-operator_install-ocp-operator)
+[3] [ACS Install](https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_security_for_kubernetes/3.71/html/installing/install-ocp-operator#install-secured-cluster-operator_install-ocp-operator)
 
 ## Author
 
