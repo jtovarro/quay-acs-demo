@@ -25,7 +25,7 @@ oc new-project quay-enterprise
 ```
 
 The standard pattern for configuring unmanaged components is:
-- 1) Create a config.yaml configuration file with the appropriate settings
+  1) Create a config.yaml configuration file with the appropriate settings
 ```
 mkdir ~/quay-demo
 cd ~/quay-demo
@@ -52,12 +52,12 @@ DISTRIBUTED_STORAGE_PREFERENCE:
 EOF
 ```
 
--  2) Create a Secret using the configuration file.
+   2) Create a Secret using the configuration file.
 ```
 oc create secret generic --from-file config.yaml=./conf-aws-storage.yaml config-bundle-secret
 ```
 
--  3) Deploy the Quay Registry CRD indentifying the unmanaged components, in this case the Object Storage.
+   3) Deploy the Quay Registry CRD indentifying the unmanaged components, in this case the Object Storage.
 
 #### __NOTE:__ It is possible to disable monitoring and horizontal pod autoscaler for example if you want to reduce cpu usage for the demo.
 
@@ -93,16 +93,16 @@ oc get route quay-registry-quay -o jsonpath={.spec.host}
 quay-registry-quay-domain.example.com
 ```
 
-- 1) First it is necessary to create an admin user, previously in our _config.yaml_, we allowed __quayadmin__ as superuser, so let's create this user.
+  1) First it is necessary to create an admin user, previously in our _config.yaml_, we allowed __quayadmin__ as superuser, so let's create this user.
 
-- 2) Quayadmin as superuser is allowed to create more users and organizations.
+  2) Quayadmin as superuser is allowed to create more users and organizations.
     - Click __Create a New Organization__, give it a name, and click __Create Organization__.
 
-- 3) In this brand new organization it is possible to see: repositories, team and membership, robot accounts, default permissions, logs, applications and organization settings.
+  3) In this brand new organization it is possible to see: repositories, team and membership, robot accounts, default permissions, logs, applications and organization settings.
  
-- 4) As organization it is possible to create different teams and users with different permissions to access the container images. Try it by yourself, creating teams and users as members.
+  4) As organization it is possible to create different teams and users with different permissions to access the container images. Try it by yourself, creating teams and users as members.
 
-- 5) Click __Create New Repository__, give it a name, choose _Private_ or _Public_ as repository visibility and click __Create Private Repository__.
+  5) Click __Create New Repository__, give it a name, choose _Private_ or _Public_ as repository visibility and click __Create Private Repository__.
  
   6) 
 
