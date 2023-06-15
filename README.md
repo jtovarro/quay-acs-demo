@@ -125,7 +125,7 @@ podman tag registry.access.redhat.com/ubi9:9.2-489 quay-registry-quay-domain.exa
 podman push quay-registry-quay-domain.example.com/repository/redhat/rhel/ubi9:9.2-489 docker://quay-registry-domain.example.com/redhat/rhel:9.2-489 --remove-signatures --tls-verify=false
 ```
 
-  11) In the __rhel__ repository in Red Hat Quay, click __Repository tags__ you will find there the two tags corresponding to the previous push command.
+  11) In the __rhel__ repository in Red Hat Quay, click __Repository tags__, you will find there the two tags corresponding to the previous push command.
 
   12) Check the __Security scan__ dashboard, this dashboard provides with an easy access to vuelnerabilities found, their severity, and if they are fixed in the next versions.
 
