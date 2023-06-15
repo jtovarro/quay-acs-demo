@@ -290,15 +290,71 @@ oc create -f secured-cluster-instance.yaml
   9) Now you should see a cluster added to ACS. Click __Compliance__ and __Scan Environment__.
 
 
-### __Summary__
+### __Tips to deploy Red Hat Quay and ACS for non-production environments__
 
-Red Hat Quay and ACS instalantion and manage.  
+Red Hat Quay alongside ACS are cpu and memory demanding so if you want to try it, __for non production environments__ it is possible to reduce their cpu and memory consume with the following:
+
+#### __NOTE:__ Check in the MachineSet that the cluster has at least 4 cpu and 16GB RAM.
+
+```
+oc get machineset -A
+
+NAMESPACE               NAME                                         DESIRED   CURRENT   READY   AVAILABLE   AGE
+openshift-machine-api   ocp-lab-4-12-12-fv9z6-worker-eu-central-1a   1         1         1       1           3d
+openshift-machine-api   ocp-lab-4-12-12-fv9z6-worker-eu-central-1b   1         1         1       1           3d
+openshift-machine-api   ocp-lab-4-12-12-fv9z6-worker-eu-central-1c   1         1         1       1           3d
+
+oc get machineset ocp-lab-4-12-12-fv9z6-worker-eu-central-1a -n openshift-machine-api -oyaml | grep vCPU
+oc get machineset ocp-lab-4-12-12-fv9z6-worker-eu-central-1a -n openshift-machine-api -oyaml | grep memoryMb
+```
+
+  1) Install Red Hat Quay in a _single_ namespace instead of _cluster wide_.
+  2) Disable _monitoring_ and _horizontalpodautoscaler_ components from Quay Registry instance.
+
+```
+  components:
+    - kind: objectstorage
+      managed: false
+    - kind: clair
+      managed: true
+    - kind: mirror
+      managed: true
+    - kind: monitoring
+      managed: false
+    - kind: tls
+      managed: true
+    - kind: quay
+      managed: true
+    - kind: clairpostgres
+      managed: true
+    - kind: postgres
+      managed: true
+    - kind: redis
+      managed: true
+    - kind: horizontalpodautoscaler
+      managed: false
+    - kind: route
+      managed: true
+```
+
+  4) Reduce the HPA replicas min and max to 1:
+
+```
+oc get hpa -A
+
+NAMESPACE         NAME                        REFERENCE                              TARGETS           MINPODS   MAXPODS   REPLICAS   AGE
+quay-enterprise   quay-registry-clair-app     Deployment/quay-registry-clair-app     18%/90%, 0%/90%   1         1         1          2d5h
+quay-enterprise   quay-registry-quay-app      Deployment/quay-registry-quay-app      44%/90%, 0%/90%   1         1         1          2d5h
+quay-enterprise   quay-registry-quay-mirror   Deployment/quay-registry-quay-mirror   29%/90%, 0%/90%   1         1         1          2d5h
+```
 
 ---
 ### Related Links
 [1] [Quay install](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/operator-preconfigure)
 
 [2] [Repository mirroring](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/manage_red_hat_quay/repo-mirroring-in-red-hat-quay#arch-mirroring-intro)
+
+[3] [ACS Install] (https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_security_for_kubernetes/3.71/html/installing/install-ocp-operator#install-secured-cluster-operator_install-ocp-operator)
 
 ## Author
 
