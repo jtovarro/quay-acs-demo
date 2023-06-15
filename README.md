@@ -82,7 +82,7 @@ EOF
 oc create -n quay-enterprise -f quayregistry.yaml
 ```
 
-Take a look to the pods in quay-enterprise namespace
+Take a look to the pods in quay-enterprise namespace, you should now see all the components running as pods.
 ```
 oc get pods -n quay-enterprise
 ```
