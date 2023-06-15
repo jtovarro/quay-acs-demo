@@ -102,7 +102,7 @@ quay-registry-quay-domain.example.com
  
   4) As organization it is possible to create different teams and users with different permissions to access the container images. Try it by yourself, creating teams and users as members.
 
-  5) Click __Create New Repository__, type __rhel__ as repository name, choose _Private_ or _Public_ as repository visibility and click __Create Private Repository__.
+  5) Click __Create New Repository__, type __rhel__ as repository name, choose _Private_ as repository visibility and click __Create Private Repository__.
  
   6) In __rhel__ repository click __Settings__. Here it is possible to add user permissions. Let's push two diferent [Certified Container Images](https://catalog.redhat.com/software/containers/search?p=1&q=ubi).
      
@@ -125,13 +125,35 @@ podman tag registry.access.redhat.com/ubi9:9.2-489 quay-registry-quay-domain.exa
 podman push quay-registry-quay-domain.example.com/repository/redhat/rhel/ubi9:9.2-489 docker://quay-registry-domain.example.com/redhat/rhel:9.2-489 --remove-signatures --tls-verify=false
 ```
 
+  11) In the __rhel__ repository in Red Hat Quay, click __Repository tags__ you will find there the two tags corresponding to the previous push command.
+
+  12) Check the __Security scan__ dashboard, this dashboard provides with an easy access to vuelnerabilities found, their severity, and if they are fixed in the next versions.
+
+## __Repository Mirroring__
+
+Red Hat Quay allows to make mirroring from another repositories. Only pull are allowed from mirrored repositories, to push to this repository it will be a _robot account_ who will take this role. 
+
+  1) Click __Create New Repository__, type __mirror-nginx__ as repository name, choose _Private_ as repository visibility and click __Create Private Repository__.
+
+  3) Go to __Settings__, and change _Repository State_ from _normal_ to __mirror__.
+
+  4) As mirroring configuration add the following:
+       Registry Location: bitnami/nginx
+       Tags: 1.1*,1.20*
+       Start Date: Today
+       Sync Interval: 10 seconds
+       Create robot account with name _quay_workshop_robot_
+       Enable mirror
+
+  5) Click __Sync now__. Now in the __Repository Tags__ section you will start to the the new container images added mirrored from _bitnami/nginx_, with the static __Security Scan__ from _Clair_.
   
+
 
 ## __Installing ACS__
 
 ### __Summary__
 
-Red Hat Quay and ACS instalantion and manage.
+Red Hat Quay and ACS instalantion and manage.  
 
 ---
 ### Related Links
