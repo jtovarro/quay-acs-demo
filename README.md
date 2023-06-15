@@ -287,6 +287,8 @@ EOF
 oc create -f secured-cluster-instance.yaml
 ```
 
+  9) Now you should see a cluster added to ACS. Click __Compliance__ and __Scan Environment__.
+
 
 ### __Summary__
 
