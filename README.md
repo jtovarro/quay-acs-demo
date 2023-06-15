@@ -12,7 +12,7 @@ Log in you RHOCP cluster:
 - Take a look to the config shown, use the default namespace *rhacs-operator* to install the RH Quay Operator.
 - Click __install__ again.
 
-Once the operator is successfuly installed (it can take some minutes) create a namespace:
+Once the operator is successfuly installed _(it can take some minutes)_ create a namespace:
 
 #### __NOTE:__ Log in if your are not already logged. Use your user, password and API.
 
@@ -82,6 +82,10 @@ EOF
 oc create -n quay-enterprise -f quayregistry.yaml
 ```
 
+Take a look to the pods in quay-enterprise namespace
+```
+oc get pods -n quay-enterprise
+```
 
 ### __Summary__
 
