@@ -87,6 +87,10 @@ Take a look to the pods in quay-enterprise namespace, you should now see all the
 oc get pods -n quay-enterprise
 ```
 
+## __Manage Red Hat Quay__
+
+## __Installing ACS__
+
 ### __Summary__
 
 RH Quay instalantions with ACS.
