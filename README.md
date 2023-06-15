@@ -95,16 +95,37 @@ quay-registry-quay-domain.example.com
 
   1) First it is necessary to create an admin user, previously in our _config.yaml_, we allowed __quayadmin__ as superuser, so let's create this user.
 
-  2) Quayadmin as superuser is allowed to create more users and organizations.
-    - Click __Create a New Organization__, give it a name, and click __Create Organization__.
+  2) _quayadmin_ as superuser is allowed to create more users and organizations.
+    - Click __Create a New Organization__, type __rhel__ as organization name, and click __Create Organization__.
 
   3) In this brand new organization it is possible to see: repositories, team and membership, robot accounts, default permissions, logs, applications and organization settings.
  
   4) As organization it is possible to create different teams and users with different permissions to access the container images. Try it by yourself, creating teams and users as members.
 
-  5) Click __Create New Repository__, give it a name, choose _Private_ or _Public_ as repository visibility and click __Create Private Repository__.
+  5) Click __Create New Repository__, type __rhel__ as repository name, choose _Private_ or _Public_ as repository visibility and click __Create Private Repository__.
  
-  6) 
+  6) In __rhel__ repository click __Settings__. Here it is possible to add user permissions. Let's push two diferent [Certified Container Images](https://catalog.redhat.com/software/containers/search?p=1&q=ubi).
+     
+  8) Select __ubi7__ and __ubi9__ containers images, then click __Get this image__ and copy the appropiate command to make a pull.
+```
+podman pull registry.access.redhat.com/ubi7:7.9-1074
+podman pull registry.access.redhat.com/ubi9:9.2-489
+```
+
+  9) Tag the container images.
+```
+podman tag registry.access.redhat.com/ubi7:7.9-1074 quay-registry-quay-domain.example.com/rhel/ubi7:7.9-1074
+podman tag registry.access.redhat.com/ubi9:9.2-489 quay-registry-quay-domain.example.com/rhel/ubi9:9.2-489
+```
+
+  10) Push the images to the Red Hat Quay registry:
+
+#### __NOTE:__ Learn more about --remove-signature flag and --tls-verify flag.
+```
+podman push quay-registry-quay-domain.example.com/repository/redhat/rhel/ubi9:9.2-489 docker://quay-registry-domain.example.com/redhat/rhel:9.2-489 --remove-signatures --tls-verify=false
+```
+
+  
 
 ## __Installing ACS__
 
