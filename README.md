@@ -26,7 +26,6 @@ oc new-project quay-enterprise
 
 The standard pattern for configuring unmanaged components is:
 - 1) Create a config.yaml configuration file with the appropriate settings
-
 ```
 mkdir ~/quay-demo
 cd ~/quay-demo
@@ -36,7 +35,7 @@ FEATURE_USER_INITIALIZE: true
 BROWSER_API_CALLS_XHR_ONLY: false
 SUPER_USERS:
 - quayadmin
-FEATURE_USER_CREATION: false
+FEATURE_USER_CREATION: true
 ## Enable the following if you want to use the new User Interface.
 ## FEATURE_UI_V2: true 
 DISTRIBUTED_STORAGE_CONFIG:
@@ -54,7 +53,6 @@ EOF
 ```
 
 -  2) Create a Secret using the configuration file.
-
 ```
 oc create secret generic --from-file config.yaml=./conf-aws-storage.yaml config-bundle-secret
 ```
@@ -89,11 +87,30 @@ oc get pods -n quay-enterprise
 
 ## __Manage Red Hat Quay__
 
+Let's check the Red Hat Quay UI and make our first log in:
+```
+oc get route quay-registry-quay -o jsonpath={.spec.host}
+quay-registry-quay-domain.example.com
+```
+
+- 1) First it is necessary to create an admin user, previously in our _config.yaml_, we allowed __quayadmin__ as superuser, so let's create this user.
+
+- 2) Quayadmin as superuser is allowed to create more users and organizations.
+    - Click __Create a New Organization__, give it a name, and click __Create Organization__.
+
+- 3) In this brand new organization it is possible to see: repositories, team and membership, robot accounts, default permissions, logs, applications and organization settings.
+ 
+- 4) As organization it is possible to create different teams and users with different permissions to access the container images. Try it by yourself, creating teams and users as members.
+
+- 5) Click __Create New Repository__, give it a name, choose _Private_ or _Public_ as repository visibility and click __Create Private Repository__.
+ 
+  6) 
+
 ## __Installing ACS__
 
 ### __Summary__
 
-RH Quay instalantions with ACS.
+Red Hat Quay and ACS instalantion and manage.
 
 ---
 ### Related Links
