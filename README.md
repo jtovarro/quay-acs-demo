@@ -298,17 +298,12 @@ Red Hat Quay alongside ACS are cpu and memory demanding so if you want to try it
 
 ```
 oc get machineset -A
-
-NAMESPACE               NAME                                         DESIRED   CURRENT   READY   AVAILABLE   AGE
-openshift-machine-api   ocp-lab-4-12-12-fv9z6-worker-eu-central-1a   1         1         1       1           3d
-openshift-machine-api   ocp-lab-4-12-12-fv9z6-worker-eu-central-1b   1         1         1       1           3d
-openshift-machine-api   ocp-lab-4-12-12-fv9z6-worker-eu-central-1c   1         1         1       1           3d
-
 oc get machineset ocp-lab-4-12-12-fv9z6-worker-eu-central-1a -n openshift-machine-api -oyaml | grep vCPU
 oc get machineset ocp-lab-4-12-12-fv9z6-worker-eu-central-1a -n openshift-machine-api -oyaml | grep memoryMb
 ```
 
   1) Install Red Hat Quay in a _single_ namespace instead of _cluster wide_.
+     
   2) Disable _monitoring_ and _horizontalpodautoscaler_ components from Quay Registry instance.
 
 ```
@@ -337,7 +332,7 @@ oc get machineset ocp-lab-4-12-12-fv9z6-worker-eu-central-1a -n openshift-machin
       managed: true
 ```
 
-  4) Reduce the HPA replicas min and max to 1:
+  3) Reduce _quay-registry-clair-app_, _quay-registry-quay-app_ and _quay-registry-quay-mirror_ HPA replicas min and max to 1:
 
 ```
 oc get hpa -A
