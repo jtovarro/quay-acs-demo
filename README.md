@@ -294,7 +294,7 @@ oc create -f secured-cluster-instance.yaml
 
 Red Hat Quay alongside ACS are cpu and memory demanding so if you want to try it, __for non production environments__ it is possible to reduce their cpu and memory consume with the following:
 
-#### __NOTE:__ Check in the MachineSet that the cluster has at least 4 cpu and 16GB RAM.
+#### __NOTE:__ Check in the MachineSet that the cluster has at least 4 CPU and 16GB RAM.
 
 ```
 oc get machineset -A
