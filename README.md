@@ -59,8 +59,6 @@ oc create secret generic --from-file config.yaml=./conf-aws-storage.yaml config-
 
    3) Deploy the Quay Registry CRD indentifying the unmanaged components, in this case the Object Storage.
 
-#### __NOTE:__ It is possible to disable monitoring and horizontal pod autoscaler for example if you want to reduce cpu usage for the demo.
-
 ```
 cat <<EOF >> quayregistry.yaml
 apiVersion: quay.redhat.com/v1
@@ -135,9 +133,11 @@ Red Hat Quay allows to make mirroring from another repositories. Only pull are a
 
   1) Click __Create New Repository__, type __mirror-nginx__ as repository name, choose _Private_ as repository visibility and click __Create Private Repository__.
 
-  3) Go to __Settings__, and change _Repository State_ from _normal_ to __mirror__.
+![Red Hat Quay dashboard](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quay-dashboard.png)
 
-  4) As mirroring configuration add the following:
+  2) Go to __Settings__, and change _Repository State_ from _normal_ to __mirror__.
+
+  3) As mirroring configuration add the following:
        Registry Location: bitnami/nginx
        Tags: 1.1*,1.20*
        Start Date: Today
@@ -145,7 +145,7 @@ Red Hat Quay allows to make mirroring from another repositories. Only pull are a
        Create robot account with name _quay_workshop_robot_
        Enable mirror
 
-  5) Click __Sync now__. Now in the __Repository Tags__ section you will start to the the new container images added mirrored from _bitnami/nginx_, with the static __Security Scan__ from _Clair_.
+  4) Click __Sync now__. Now in the __Repository Tags__ section you will start to the the new container images added mirrored from _bitnami/nginx_, with the static __Security Scan__ from _Clair_.
 
 ## __Installing ACS__
 
@@ -205,7 +205,7 @@ EOF
 oc create -f central-instance.yaml -n stackrox
 ```
 
-  3) Wait for all the pods in _stackrox_ namespace to become ready and running.
+  2) Wait for all the pods in _stackrox_ namespace to become ready and running.
 
 ```
 oc get pods -n stackrox
@@ -228,23 +228,23 @@ scanner-db-68cccfc7d5-b8zk8          1/1     Running   0                4h40m
 sensor-789c5646c7-s5ww2              1/1     Running   0                4h3m
 ```
 
-  4) Once all the pods are running go to the ACS dashboard.
+  3) Once all the pods are running go to the ACS dashboard.
 
 ```
 oc get route central -o jsonpath={.spec.host} -n stackrox
 ```
 
-  5) To access to ACS you will find Admin credential info in the Central instance, use __admin__ as user and go to the _Data_ section in the __central-htpasswd__ secret for the password.
+  4) To access to ACS you will find Admin credential info in the Central instance, use __admin__ as user and go to the _Data_ section in the __central-htpasswd__ secret for the password.
 
-  6) In the ACS dashboard fo to __Platform Configuration__, then __Integrations__ and search for _Authentication Tokens_ at the end of the page. Click __Cluster Init Bundle__.
+  5) In the ACS dashboard fo to __Platform Configuration__, then __Integrations__ and search for _Authentication Tokens_ at the end of the page. Click __Cluster Init Bundle__.
 
-  7) Click __Generate bundle__, type __my-cluster__ as name, and __Download Kubernetes secrets file__. Apply the secret file downloaded.
+  6) Click __Generate bundle__, type __my-cluster__ as name, and __Download Kubernetes secrets file__. Apply the secret file downloaded.
 
 ```
 oc create -f my-cluster-cluster-init-secrets.yaml -n stackrox
 ```
 
-  8) Last step here is to create a __Secured Cluster__ instance.
+  7) Last step here is to create a __Secured Cluster__ instance.
 
 #### __NOTE:__ Do not forget to add the port at the end of the _central endpoint_.
 
@@ -287,7 +287,7 @@ EOF
 oc create -f secured-cluster-instance.yaml
 ```
 
-  9) Now you should see a cluster added to ACS. Click __Compliance__ and __Scan Environment__.
+  8) Now you should see a cluster added to ACS. Click __Compliance__ and __Scan Environment__.
 
 
 ### __Tips to deploy Red Hat Quay and ACS for non-production environments__
