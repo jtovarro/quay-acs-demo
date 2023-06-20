@@ -260,7 +260,7 @@ oc create -f my-cluster-cluster-init-secrets.yaml -n stackrox
 
   7) Last step here is to create a __Secured Cluster__ instance.
 
-#### __NOTE:__ Do not forget to add the port at the end of the _central endpoint_.
+#### __NOTE:__ Do not forget to add the 443 port at the end of the _central endpoint_.
 
 ```
 cat <<EOF >> secured-cluster-instance.yaml
