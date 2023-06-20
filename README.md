@@ -393,7 +393,7 @@ oc get machineset ocp-lab-4-12-12-fv9z6-worker-eu-central-1a -n openshift-machin
 oc get machineset ocp-lab-4-12-12-fv9z6-worker-eu-central-1a -n openshift-machine-api -oyaml | grep memoryMb
 ```
 
-  1) Install Red Hat Quay in a _single_ namespace instead of _cluster wide_.
+  1) Install Red Hat Quay in a _single_ namespace instead of _cluster wide_, for example install the operator in quay-enterprise namespace.
      
   2) Disable _monitoring_ and _horizontalpodautoscaler_ components from Quay Registry instance.
 
