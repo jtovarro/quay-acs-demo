@@ -8,12 +8,17 @@
 Log in you RHOCP cluster:
 
 - Click __OperatorHub__ and search for *Red Hat Quay*.
+  
 ![Red Hat Operator Hub](https://github.com/jtovarro/quay-acs-demo/blob/main/images/operator-hub.jpg)
+
 - Click __install__.
-![Quay install](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quay-install.png)
+  
+![Quay install](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quay-install.jpg)
+
 - Take a look to the config shown, use the default namespace to install the Red Hat Quay Operator.
 - Click __install__ again.
-![Quay install](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quay-install-2.png)
+
+![Quay install](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quay-install-2.jpg)
 
 Once the operator is successfuly installed _(it can take some minutes)_ create a namespace:
 
