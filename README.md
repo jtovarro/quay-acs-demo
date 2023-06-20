@@ -5,7 +5,7 @@
 - 1x AWS account with a bucket storage.
 
 ## __Table of Content__
-- [Installing Red Hat Quay using AWS S3 storage unmanaged storage](https://github.com/jtovarro/quay-acs-demo/edit/main/README.md/## __Installing Red Hat Quay using AWS S3 storage unmanaged storage__)
+- [Installing Red Hat Quay using AWS S3 storage unmanaged storage](https://github.com/jtovarro/quay-acs-demo/edit/main/README.md/##__Installing Red Hat Quay using AWS S3 storage unmanaged storage__)
 - Manage Red Hat Quay
 - Repository Mirroring
 - Installing ACS
