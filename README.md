@@ -274,6 +274,8 @@ scanner-db-68cccfc7d5-sdskp   1/1     Running   0          5m18s
 oc get route central -o jsonpath={.spec.host} -n stackrox
 ```
 
+![ACS log in console](https://github.com/jtovarro/quay-acs-demo/blob/main/images/acs-login.png)
+
   4) To access to ACS you will find Admin credential info in the Central instance, use __admin__ as user and go to the _Data_ section in the __central-htpasswd__ secret for the password.
 
 ![Central instance](https://github.com/jtovarro/quay-acs-demo/blob/main/images/central.jpg)
