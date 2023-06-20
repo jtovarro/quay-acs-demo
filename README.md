@@ -89,6 +89,18 @@ oc create -n quay-enterprise -f quayregistry.yaml
 Take a look to the pods in quay-enterprise namespace, you should now see all the components running as pods.
 ```
 oc get pods -n quay-enterprise
+
+NAME                                                READY   STATUS        RESTARTS       AGE
+quay-operator.v3.8.8-76546dc949-nz28x               1/1     Running       0              129m
+quay-registry-clair-app-577d85bd86-89xkb            1/1     Running       0              126m
+quay-registry-clair-postgres-674d6c879b-zxqjw       1/1     Running       1              127m
+quay-registry-quay-app-5964c8f454-79xqv             1/1     Running       0              126m
+quay-registry-quay-app-upgrade-pvvx8                0/1     Completed     0              127m
+quay-registry-quay-config-editor-685b7b9f76-8bng8   1/1     Running       0              126m
+quay-registry-quay-database-777f86cf96-gk88d        1/1     Running       0              127m
+quay-registry-quay-mirror-cfc4bcdf-5xztx            1/1     Running       0              125m
+quay-registry-quay-mirror-cfc4bcdf-v9mfr            1/1     Running       0              29s
+quay-registry-quay-redis-69ccdc9dc-fvxpf            1/1     Running       0              127m
 ```
 
 ## __Manage Red Hat Quay__
