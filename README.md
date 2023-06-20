@@ -277,8 +277,25 @@ EOF
 oc create -f secured-cluster-instance.yaml
 ```
 
-  8) Now you should see a cluster added to ACS. Click __Compliance__ and __Scan Environment__.
+  8) Now you should see a cluster added to ACS (it can take some minutes). Click __Compliance__ and __Scan Environment__. Also it is possible to check the _admission_, _collector_ and _scanner_ pods running.
 
+```
+oc get pods -n stackrox
+
+NAME                                 READY   STATUS    RESTARTS   AGE
+admission-control-6b5dd59bc6-5xncp   1/1     Running   0          28s
+admission-control-6b5dd59bc6-bjk6c   1/1     Running   0          28s
+admission-control-6b5dd59bc6-gklnw   1/1     Running   0          28s
+central-66df9d9c79-9dlcv             1/1     Running   0          11m
+central-db-85bb8bfbc5-7p8bl          1/1     Running   0          11m
+collector-6gzpm                      3/3     Running   0          28s
+collector-l76tw                      3/3     Running   0          28s
+collector-v9sd2                      3/3     Running   0          28s
+scanner-58cf565974-4ppsc             1/1     Running   0          11m
+scanner-58cf565974-tffh5             1/1     Running   0          11m
+scanner-db-68cccfc7d5-sdskp          1/1     Running   0          11m
+sensor-758588f75f-mqtjw              1/1     Running   0          28s
+``` 
 
 ### __Tips to deploy Red Hat Quay and ACS for non-production environments__
 
