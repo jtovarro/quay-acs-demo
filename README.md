@@ -4,6 +4,10 @@
 - 1x Red Hat OpenShift Platform (RHOCP4) v4.13
 - 1x AWS account with a bucket storage.
 
+## __Table of Content__
+- Installing Red Hat Quay using AWS S3 storage unmanaged storage.
+- Manage Red Hat Quay.
+
 ## __Installing Red Hat Quay using AWS S3 storage unmanaged storage__
 Log in you RHOCP cluster:
 
@@ -59,6 +63,8 @@ DISTRIBUTED_STORAGE_PREFERENCE:
     - s3Storage
 EOF
 ```
+
+In this repository, we are configuring the object storage as unmanaged, specifically using AWS S3 storage. However, it can also be configured with other unmanaged S3 storage options, as well as managed storage like ODF.
 
    2) Create a Secret using the configuration file.
 ```
