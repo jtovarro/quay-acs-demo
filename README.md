@@ -139,12 +139,12 @@ Red Hat Quay allows to make mirroring from another repositories. Only pull are a
   2) Go to __Settings__, and change _Repository State_ from _normal_ to __mirror__.
 
   3) As mirroring configuration add the following:
-       Registry Location: bitnami/nginx
-       Tags: 1.1*,1.20*
-       Start Date: Today
-       Sync Interval: 10 seconds
-       Create robot account with name _quay_workshop_robot_
-       Enable mirror
+       - Registry Location: bitnami/nginx
+       - Tags: 1.1*,1.20*
+       - Start Date: Today
+       - Sync Interval: 10 seconds
+       - Create robot account with name _quay_workshop_robot_
+       - Enable mirror
 
   4) Click __Sync now__. Now in the __Repository Tags__ section you will start to the the new container images added mirrored from _bitnami/nginx_, with the static __Security Scan__ from _Clair_.
 
