@@ -125,7 +125,7 @@ oc get route quay-registry-quay -o jsonpath={.spec.host} -n quay-enterprise
 
   3) In this brand new organization it is possible to see: repositories, team and membership, robot accounts, default permissions, logs, applications and organization settings.
 
-![New Organization dashboard](https://github.com/jtovarro/quay-acs-demo/blob/main/images/organization-dashboard.jpg)
+![New Organization dashboard](https://github.com/jtovarro/quay-acs-demo/blob/main/images/organization-dashboard.png)
  
   4) As organization it is possible to create different teams and users with different permissions to access the container images. Try it by yourself, creating teams and users as members.
 
