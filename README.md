@@ -133,11 +133,11 @@ oc get route quay-registry-quay -o jsonpath={.spec.host} -n quay-enterprise
 
 ![Brand new repository](https://github.com/jtovarro/quay-acs-demo/blob/main/images/repository.jpg)
  
-  6) In __rhel__ repository click __Settings__. Here it is possible to add user permissions. Let's push two diferent [Certified Container Images](https://catalog.redhat.com/software/containers/search?p=1&q=ubi).
+  6) In __rhel__ repository click __Settings__. Here it is possible to add user permissions. 
 
 ![Settings](https://github.com/jtovarro/quay-acs-demo/blob/main/images/setting-repo.jpg)
 
-  8) Select __ubi7__ and __ubi9__ containers images, then click __Get this image__ and copy the appropiate command to make a pull.
+  8) Let's push two diferent [Certified Container Images](https://catalog.redhat.com/software/containers/search?p=1&q=ubi). Select __ubi7__ and __ubi9__ containers images, then click __Get this image__ and copy the appropiate command to make a pull.
 
 ![Red Hat Container images](https://github.com/jtovarro/quay-acs-demo/blob/main/images/container-image.jpg)
 
