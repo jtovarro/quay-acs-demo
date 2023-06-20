@@ -9,11 +9,10 @@
 - [Manage Red Hat Quay](https://github.com/jtovarro/quay-acs-demo#manage-red-hat-quay)
 - [Repository Mirroring](https://github.com/jtovarro/quay-acs-demo#repository-mirroring)
 - [Installing ACS](https://github.com/jtovarro/quay-acs-demo#installing-acs)
-- [Deploying Red Hat Quay and ACS on Infrastructure nodes](https://github.com/jtovarro/quay-acs-demo#deploying-red-hat-quay-and-acs-on-infrastructure-nodes)
+- [Deploying Red Hat Quay and ACS on Infrastructure nodes](https://github.com/jtovarro/quay-acs-demo#deploying-red-hat-quay-and-acs-on-infrastructure-nodes) ##WORKING
 - [Tips to deploy Red Hat Quay and ACS for non-production environments](https://github.com/jtovarro/quay-acs-demo#tips-to-deploy-red-hat-quay-and-acs-for-non-production-environments)
 - [References](https://github.com/jtovarro/quay-acs-demo#references)
 
-.1-title
 ## __Installing Red Hat Quay using AWS S3 storage unmanaged storage__
 Log in you RHOCP cluster:
 
