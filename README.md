@@ -5,8 +5,13 @@
 - 1x AWS account with a bucket storage.
 
 ## __Table of Content__
-- Installing Red Hat Quay using AWS S3 storage unmanaged storage.
-- Manage Red Hat Quay.
+- [Installing Red Hat Quay using AWS S3 storage unmanaged storage](## __Installing Red Hat Quay using AWS S3 storage unmanaged storage__)
+- Manage Red Hat Quay
+- Repository Mirroring
+- Installing ACS
+- Deploying Red Hat Quay and ACS on Infrastructure nodes
+- Tips to deploy Red Hat Quay and ACS for non-production environments
+- References
 
 ## __Installing Red Hat Quay using AWS S3 storage unmanaged storage__
 Log in you RHOCP cluster:
@@ -387,6 +392,10 @@ sensor-758588f75f-mqtjw              1/1     Running   0          28s
 
 ![Scan completed](https://github.com/jtovarro/quay-acs-demo/blob/main/images/compliance-3.png)
 
+### __Deploying Red Hat Quay and ACS on Infrastructure nodes__
+
+TO COMPLETE
+
 ### __Tips to deploy Red Hat Quay and ACS for non-production environments__
 
 Red Hat Quay alongside ACS are cpu and memory demanding so if you want to try it, __for non production environments__ it is possible to reduce their cpu and memory consume with the following:
@@ -441,12 +450,16 @@ quay-enterprise   quay-registry-quay-mirror   Deployment/quay-registry-quay-mirr
 ```
 
 ---
-### Related Links
+### References
 [1] [Quay install](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/operator-preconfigure)
 
 [2] [Repository mirroring](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/manage_red_hat_quay/repo-mirroring-in-red-hat-quay#arch-mirroring-intro)
 
 [3] [ACS Install](https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_security_for_kubernetes/3.71/html/installing/install-ocp-operator#install-secured-cluster-operator_install-ocp-operator)
+
+[4] [Infrastructure Nodes in OpenShift](https://access.redhat.com/solutions/5034771)
+
+[5] [Deploying Quay on infrastructure nodes](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/advanced-concepts#operator-deploy-infrastructure)
 
 ## Author
 
