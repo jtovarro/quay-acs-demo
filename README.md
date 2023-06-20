@@ -188,7 +188,7 @@ Red Hat Quay allows you to mirroring from public or private repositories. Only _
 
   2) Go to __Settings__, and change _Repository State_ from _normal_ to __mirror__.
 
-![Mirror state](https://github.com/jtovarro/quay-acs-demo/blob/main/images/setting-mirror-png)
+![Mirror state](https://github.com/jtovarro/quay-acs-demo/blob/main/images/setting-mirror.jpg)
 
   3) As mirroring configuration add the following:
        - Registry Location: bitnami/nginx
@@ -303,9 +303,9 @@ oc get route central -o jsonpath={.spec.host} -n stackrox
 
 ![Integrations](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-2.jpg)
 
-  7) Click __Generate bundle__, type __quay-cluster__ as name, and __Download Kubernetes secrets file__. 
-
 ![Cluster Init Bundle](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-3.jpg)
+
+  7) Click __Generate bundle__, type __quay-cluster__ as name, and __Download Kubernetes secrets file__. 
 
 ![Generate bundle](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-4.png)
 
@@ -388,7 +388,7 @@ sensor-758588f75f-mqtjw              1/1     Running   0          28s
 
 ![Scan Environment](https://github.com/jtovarro/quay-acs-demo/blob/main/images/compliance-2.jpg)
 
-    - Once the scan is completed you should see in the dashbord metrics about compliance.
+  Once the scan is completed you should see in the dashbord metrics about compliance.
 
 ![Scan completed](https://github.com/jtovarro/quay-acs-demo/blob/main/images/compliance-3.png)
 
