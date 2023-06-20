@@ -5,7 +5,7 @@
 - 1x AWS account with a bucket storage.
 
 ## __Table of Content__
-- [Installing Red Hat Quay using AWS S3 storage unmanaged storage](https://github.com/jtovarro/quay-acs-demo/edit/main/README.md/##__Installing Red Hat Quay using AWS S3 storage unmanaged storage__)
+- [Installing Red Hat Quay using AWS S3 storage unmanaged storage](https://github.com/jtovarro/quay-acs-demo/edit/main/README.md/.1-title)
 - Manage Red Hat Quay
 - Repository Mirroring
 - Installing ACS
@@ -13,6 +13,7 @@
 - Tips to deploy Red Hat Quay and ACS for non-production environments
 - References
 
+.1-title
 ## __Installing Red Hat Quay using AWS S3 storage unmanaged storage__
 Log in you RHOCP cluster:
 
