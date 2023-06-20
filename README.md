@@ -311,7 +311,7 @@ oc get route central -o jsonpath={.spec.host} -n stackrox
 
 ![Download Kubernetes Secret file](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-6.jpg)
 
-    - Then apply the secret file downloaded.
+  Then apply the secret file downloaded.
 
 ```
 oc create -f my-cluster-cluster-init-secrets.yaml -n stackrox
