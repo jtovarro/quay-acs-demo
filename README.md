@@ -64,7 +64,7 @@ DISTRIBUTED_STORAGE_PREFERENCE:
 EOF
 ```
 
-In this repository, we are configuring the object storage as unmanaged, specifically using AWS S3 storage. However, it can also be configured with other unmanaged S3 storage options, as well as managed storage like ODF.
+#### __NOTE:__ In this repository, we are configuring the object storage as unmanaged, specifically using AWS S3 storage. However, it can also be configured with other unmanaged S3 storage options, as well as managed storage like ODF. See the [documentation](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/operator-preconfigure).
 
    2) Create a Secret using the configuration file.
 ```
