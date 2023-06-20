@@ -114,10 +114,18 @@ oc get route quay-registry-quay -o jsonpath={.spec.host} -n quay-enterprise
 
 #### __NOTE:__ Once this first user is created, change the __FEATURE_USER_CREATION: false__ to in the config-budle-secret secret used previously in to install Red Hat Quay. This feature enables/desables de UI to create users. 
 
+![Create a user](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quay-user.jpg)
+
+![Create a user](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quay-user-2.jpg)
+
   2) _quayadmin_ as superuser is allowed to create more users and organizations.
     - Click __Create a New Organization__, type __redhat__ as organization name, and click __Create Organization__.
 
+![Create a new organization](https://github.com/jtovarro/quay-acs-demo/blob/main/images/organization.jpg)
+
   3) In this brand new organization it is possible to see: repositories, team and membership, robot accounts, default permissions, logs, applications and organization settings.
+
+![New Organization dashboard](https://github.com/jtovarro/quay-acs-demo/blob/main/images/organization-dashboard.jpg)
  
   4) As organization it is possible to create different teams and users with different permissions to access the container images. Try it by yourself, creating teams and users as members.
 
