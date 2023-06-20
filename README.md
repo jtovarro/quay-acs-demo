@@ -252,7 +252,7 @@ oc get route central -o jsonpath={.spec.host} -n stackrox
   
   6) Click __Cluster Init Bundle__.
 
-  7) Click __Generate bundle__, type __my-cluster__ as name, and __Download Kubernetes secrets file__. Apply the secret file downloaded.
+  7) Click __Generate bundle__, type __quay-cluster__ as name, and __Download Kubernetes secrets file__. Then apply the secret file downloaded.
 
 ```
 oc create -f my-cluster-cluster-init-secrets.yaml -n stackrox
