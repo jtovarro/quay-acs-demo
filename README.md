@@ -377,7 +377,7 @@ sensor-758588f75f-mqtjw              1/1     Running   0          28s
 
     - Once the scan is completed you should see in the dashbord metrics about compliance.
 
-![Scan completed](https://github.com/jtovarro/quay-acs-demo/blob/main/images/compliance-3.jpg)
+![Scan completed](https://github.com/jtovarro/quay-acs-demo/blob/main/images/compliance-3.png)
 
 ### __Tips to deploy Red Hat Quay and ACS for non-production environments__
 
