@@ -177,7 +177,7 @@ Red Hat Quay allows you to mirroring from public or private repositories. Only _
 
   2) Go to __Settings__, and change _Repository State_ from _normal_ to __mirror__.
 
-![Mirror state](https://github.com/jtovarro/quay-acs-demo/blob/main/images/setting-mirror-jpg)
+![Mirror state](https://github.com/jtovarro/quay-acs-demo/blob/main/images/setting-mirror-png)
 
   3) As mirroring configuration add the following:
        - Registry Location: bitnami/nginx
@@ -294,7 +294,7 @@ oc get route central -o jsonpath={.spec.host} -n stackrox
 
 ![Cluster Init Bundle](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-3.jpg)
 
-![Generate bundle](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-4.jpg)
+![Generate bundle](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-4.png)
 
 ![Download Kubernetes Secret file](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-6.jpg)
 
