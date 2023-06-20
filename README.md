@@ -248,9 +248,11 @@ oc get route central -o jsonpath={.spec.host} -n stackrox
 
   4) To access to ACS you will find Admin credential info in the Central instance, use __admin__ as user and go to the _Data_ section in the __central-htpasswd__ secret for the password.
 
-  5) In the ACS dashboard fo to __Platform Configuration__, then __Integrations__ and search for _Authentication Tokens_ at the end of the page. Click __Cluster Init Bundle__.
+  5) In the ACS dashboard fo to __Platform Configuration__, then __Integrations__ and search for _Authentication Tokens_ at the end of the page.
+  
+  6) Click __Cluster Init Bundle__.
 
-  6) Click __Generate bundle__, type __my-cluster__ as name, and __Download Kubernetes secrets file__. Apply the secret file downloaded.
+  7) Click __Generate bundle__, type __my-cluster__ as name, and __Download Kubernetes secrets file__. Apply the secret file downloaded.
 
 ```
 oc create -f my-cluster-cluster-init-secrets.yaml -n stackrox
