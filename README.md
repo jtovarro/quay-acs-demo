@@ -108,7 +108,6 @@ quay-registry-quay-redis-69ccdc9dc-fvxpf            1/1     Running       0     
 Let's check the Red Hat Quay UI and make our first log in:
 ```
 oc get route quay-registry-quay -o jsonpath={.spec.host} -n quay-enterprise
-quay-registry-quay-domain.example.com
 ```
 
   1) First it is necessary to create an admin user, previously in our _config.yaml_, we allowed __quayadmin__ as superuser, so let's create this user.
