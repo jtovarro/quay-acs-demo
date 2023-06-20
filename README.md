@@ -113,6 +113,8 @@ quay-registry-quay-domain.example.com
 
   1) First it is necessary to create an admin user, previously in our _config.yaml_, we allowed __quayadmin__ as superuser, so let's create this user.
 
+#### __NOTE:__ Once this first user is created, change the __FEATURE_USER_CREATION: false__ to in the config-budle-secret secret used previously in to install Red Hat Quay. This feature enables/desables de UI to create users. 
+
   2) _quayadmin_ as superuser is allowed to create more users and organizations.
     - Click __Create a New Organization__, type __rhel__ as organization name, and click __Create Organization__.
 
