@@ -130,10 +130,17 @@ oc get route quay-registry-quay -o jsonpath={.spec.host} -n quay-enterprise
   4) As organization it is possible to create different teams and users with different permissions to access the container images. Try it by yourself, creating teams and users as members.
 
   5) Click __Create New Repository__, type __rhel__ as repository name, choose _Private_ as repository visibility and click __Create Private Repository__.
+
+![Brand new repository](https://github.com/jtovarro/quay-acs-demo/blob/main/images/repository.jpg)
  
   6) In __rhel__ repository click __Settings__. Here it is possible to add user permissions. Let's push two diferent [Certified Container Images](https://catalog.redhat.com/software/containers/search?p=1&q=ubi).
-     
+
+![Settings](https://github.com/jtovarro/quay-acs-demo/blob/main/images/setting-repo.jpg)
+
   8) Select __ubi7__ and __ubi9__ containers images, then click __Get this image__ and copy the appropiate command to make a pull.
+
+![Red Hat Container images](https://github.com/jtovarro/quay-acs-demo/blob/main/images/container-image.jpg)
+
 ```
 podman pull registry.access.redhat.com/ubi7:7.9-1074
 podman pull registry.access.redhat.com/ubi9:9.2-489
@@ -147,7 +154,6 @@ podman tag registry.access.redhat.com/ubi9:9.2-489 quay-registry-quay-domain.exa
 
   10) Push the images to the Red Hat Quay registry:
 
-#### __NOTE:__ Learn more about --remove-signature and --tls-verify flags.
 ```
 podman push quay-registry-quay-domain.example.com/rhel/ubi9:9.2-489 docker://quay-registry-domain.example.com/redhat/rhel:9.2-489 --remove-signatures --tls-verify=false
 podman push quay-registry-quay-domain.example.com/rhel/ubi7:7.9-1074 docker://quay-registry-domain.example.com/redhat/rhel:7.9-1074 --remove-signatures --tls-verify=false
@@ -155,17 +161,23 @@ podman push quay-registry-quay-domain.example.com/rhel/ubi7:7.9-1074 docker://qu
 
   11) In the __rhel__ repository in Red Hat Quay, click __Repository tags__, you will find there the two tags corresponding to the previous push command.
 
+![Container images](https://github.com/jtovarro/quay-acs-demo/blob/main/images/tags.png)
+
   12) Check the __Security scan__ dashboard, this dashboard provides with an easy access to vuelnerabilities found, their severity, and if they are fixed in the next versions.
+
+![Image vulnerabilities](https://github.com/jtovarro/quay-acs-demo/blob/main/images/vulnerabilities.png)
 
 ## __Repository Mirroring__
 
-Red Hat Quay allows to make mirroring from another repositories. Only pull are allowed from mirrored repositories, to push to this repository it will be a _robot account_ who will take this role. 
+Red Hat Quay allows you to mirroring from public or private repositories. Only _pull_ are allowed from mirrored repositories, to push to this repository a _robot account_ will take on this role. 
 
   1) Click __Create New Repository__, type __mirror-nginx__ as repository name, choose _Private_ as repository visibility and click __Create Private Repository__.
 
-![Red Hat Quay dashboard](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quay-dashboard.png)
+![Mirroring repository](https://github.com/jtovarro/quay-acs-demo/blob/main/images/new-repo.jpg)
 
   2) Go to __Settings__, and change _Repository State_ from _normal_ to __mirror__.
+
+![Mirror state](https://github.com/jtovarro/quay-acs-demo/blob/main/images/setting-mirror-jpg)
 
   3) As mirroring configuration add the following:
        - Registry Location: bitnami/nginx
@@ -175,16 +187,24 @@ Red Hat Quay allows to make mirroring from another repositories. Only pull are a
        - Create robot account with name _quay_workshop_robot_
        - Enable mirror
 
+![Mirroring nginx repository](https://github.com/jtovarro/quay-acs-demo/blob/main/images/mirroring-config.jpg)
+
   4) Click __Sync now__. Now in the __Repository Tags__ section you will start to the the new container images added mirrored from _bitnami/nginx_, with the static __Security Scan__ from _Clair_.
+
+![Mirrored tags](https://github.com/jtovarro/quay-acs-demo/blob/main/images/mirror-tags.png)
 
 ## __Installing ACS__
 
 - Click __OperatorHub__ and search for *Advanced Cluster Security* or *ACS*
+
+![Operator Hub](https://github.com/jtovarro/quay-acs-demo/blob/main/images/operator-hub.jpg)
+
 - Click __install__.
 - Take a look to the config shown, use the default namespace *rhacs-operator* to install the RH Quay Operator.
 - Click __install__ again.
 
 Once the operator is successfuly installed _(it can take some minutes)_ create a namespace:
+
 ```
 oc new-project stackrox
 ```
@@ -256,11 +276,29 @@ oc get route central -o jsonpath={.spec.host} -n stackrox
 
   4) To access to ACS you will find Admin credential info in the Central instance, use __admin__ as user and go to the _Data_ section in the __central-htpasswd__ secret for the password.
 
+![Central instance](https://github.com/jtovarro/quay-acs-demo/blob/main/images/central.jpg)
+
+![Secret](https://github.com/jtovarro/quay-acs-demo/blob/main/images/central-2.jpg)
+
+![Reveal password](https://github.com/jtovarro/quay-acs-demo/blob/main/images/central-3.jpg)
+
   5) In the ACS dashboard fo to __Platform Configuration__, then __Integrations__ and search for _Authentication Tokens_ at the end of the page.
-  
+
+![Adding the cluster to ACS](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs.jpg)
+
   6) Click __Cluster Init Bundle__.
 
-  7) Click __Generate bundle__, type __quay-cluster__ as name, and __Download Kubernetes secrets file__. Then apply the secret file downloaded.
+![Integrations](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-2.jpg)
+
+  7) Click __Generate bundle__, type __quay-cluster__ as name, and __Download Kubernetes secrets file__. 
+
+![Cluster Init Bundle](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-3.jpg)
+
+![Generate bundle](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-4.jpg)
+
+![Download Kubernetes Secret file](https://github.com/jtovarro/quay-acs-demo/blob/main/images/config-acs-6.jpg)
+
+    - Then apply the secret file downloaded.
 
 ```
 oc create -f my-cluster-cluster-init-secrets.yaml -n stackrox
@@ -309,7 +347,7 @@ EOF
 oc create -f secured-cluster-instance.yaml
 ```
 
-  8) Now you should see a cluster added to ACS (it can take some minutes). Click __Compliance__ and __Scan Environment__. Also it is possible to check the _admission_, _collector_ and _scanner_ pods running.
+  8) Now you should see a cluster added to ACS (it can take some minutes). Check that the _admission_, _collector_ and _scanner_ pods are running.
 
 ```
 oc get pods -n stackrox
@@ -328,6 +366,18 @@ scanner-58cf565974-tffh5             1/1     Running   0          11m
 scanner-db-68cccfc7d5-sdskp          1/1     Running   0          11m
 sensor-758588f75f-mqtjw              1/1     Running   0          28s
 ``` 
+
+  9) Click __Compliance__.
+
+![Compliance](https://github.com/jtovarro/quay-acs-demo/blob/main/images/compliance.jpg)
+
+  10) Click __Scan Environment__.
+
+![Scan Environment](https://github.com/jtovarro/quay-acs-demo/blob/main/images/compliance-2.jpg)
+
+    - Once the scan is completed you should see in the dashbord metrics about compliance.
+
+![Scan completed](https://github.com/jtovarro/quay-acs-demo/blob/main/images/compliance-3.jpg)
 
 ### __Tips to deploy Red Hat Quay and ACS for non-production environments__
 
