@@ -399,13 +399,13 @@ sensor-758588f75f-mqtjw              1/1     Running   0          28s
 
 ### __Deploying Red Hat Quay and ACS on Infrastructure nodes__
 
-By default, Quay-related pods are placed on arbitrary worker nodes when using the Operator to deploy the registry. The OpenShift Container Platform documentation shows how to use machine sets to configure nodes to only host infrastructure components (see [https://docs.openshift.com/container-platform/4.13/machine_management/creating-infrastructure-machinesets.html](https://docs.openshift.com/container-platform/4.13/machine_management/creating-infrastructure-machinesets.html)).
+By default, Quay-related pods are placed on arbitrary worker nodes when using the Operator to deploy the registry. The OpenShift Container Platform documentation shows how to use machine sets to configure nodes to only host infrastructure components (see [Documentation](https://docs.openshift.com/container-platform/4.13/machine_management/creating-infrastructure-machinesets.html)).
 
 Applying a taint to the infrastructure nodes and a toleration for that taint to all infrastructure components will guarantee that only those resources will be scheduled on the Infrastructure nodes. Taints can prevent workloads that do not have a matching toleration from running on particular nodes.
 
 #### __NOTE:__ Some workloads such as daemonsets still need to be scheduled on these particular nodes. In this case, those workloads need a universal toleration.
 
-It is possible to [configure infrastructure nodes with labels and taints manually](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/advanced-concepts#operator-deploy-infrastructure), for this scenario we will be using machine sets.
+It is possible to [Manually set labels and taints on Infrastructure Nodes.](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/advanced-concepts#operator-deploy-infrastructure), for this scenario we will be using machine sets.
 
   1) Run the following commands to get the infraestructure ID from your cluster, then change them in the machine set.
 
@@ -488,7 +488,7 @@ EOF
 oc create -f infrastructure-ms-1a.yaml -n openshift-machine-api
 ```
 
-Once the machine sets are created, you should have three (3) new nodes with __node-role.kubernetes.io/infra: ""__ and __"node-role.kubernetes.io/worker: ""__ labels. Also these nodes will have a taint to avoid workloads to be scheduled on infra nodes. To avoid this restriction and __deploy Red Hat Quay and ACS on infra nodes__ it is possible to use taint tolerations:
+Once the machine sets are created, you should have three (3) new nodes with __node-role.kubernetes.io/infra: ""__ and __"node-role.kubernetes.io/worker: ""__ labels. Also these nodes will have a taint to avoid workloads to be scheduled on infra nodes. To avoid this restriction and deploy Red Hat Quay and ACS on infra nodes it is possible to use taint tolerations:
 
 #### __NOTE:__ If you have already deployed Quay using the Quay Operator, remove the installed operator and any specific namespace(s) you created for the deployment.
 
@@ -515,7 +515,7 @@ oc apply -f quay-enterprise-ns.yaml
 
   Any subsequent resources created in the quay-registry namespace should now be scheduled on the dedicated infrastructure nodes.
 
-  3) Follow the same steps seen previously in [Installing Red Hat Quay using AWS S3 storage unmanaged storage](https://github.com/jtovarro/quay-acs-demo/blob/main/README.md#installing-red-hat-quay-using-aws-s3-storage-unmanaged-storage). Any subsequent resources created in the _quay-enterprise_ namespace should now be scheduled on the dedicated infrastructure nodes.
+  3) Follow the same steps seen previously in [Installing Red Hat Quay](https://github.com/jtovarro/quay-acs-demo/blob/main/README.md#installing-red-hat-quay-using-aws-s3-storage-unmanaged-storage). Any subsequent resources created in the _quay-enterprise_ namespace should now be scheduled on the dedicated infrastructure nodes.
 
   4) Create a new project specifying a node selector and taint toleration to deploy __ACS__ workloads on infrastructure nodes.
 
