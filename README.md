@@ -296,7 +296,7 @@ Storing signatures
 
 See the original container image in [quay.io/projectquay/clair:nightly](https://quay.io/repository/projectquay/clair?tab=tags).
 
-![quay.io image](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-5.jpg)
+![quay.io image](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-5.png)
 
 ## __Installing ACS__
 
