@@ -29,7 +29,7 @@ Log in you RHOCP cluster:
 
 ![Quay install](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quay-install-2.jpg)
 
-Once the operator is successfuly installed _(it can take some minutes)_ create a namespace:
+Once the operator is successfully installed _(it can take some minutes)_ create a namespace:
 
 #### __NOTE:__ Log in if your are not already logged. Use your user, password and API.
 
@@ -59,7 +59,7 @@ DISTRIBUTED_STORAGE_CONFIG:
   s3Storage:
     - S3Storage
     - host: s3.aws_region.amazonaws.com
-      s3_access_key: your_acces_key
+      s3_access_key: your_access_key
       s3_secret_key: your_secret_key
       s3_bucket: your_bucket
       storage_path: /datastorage/registry
@@ -71,12 +71,12 @@ EOF
 
 #### __NOTE:__ In this repository, we are configuring the object storage as unmanaged, specifically using AWS S3 storage. However, it can also be configured with other unmanaged S3 storage options, as well as managed storage like ODF. See the [documentation](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/operator-preconfigure).
 
-   2) Create a Secret using the configuration file.
+   2) Create a secret using the configuration file.
 ```
 oc create secret generic --from-file config.yaml=./conf-aws-storage.yaml config-bundle-secret -n quay-enterprise
 ```
 
-   3) Deploy the Quay Registry CRD indentifying the unmanaged components, in this case the Object Storage.
+   3) Deploy the Quay Registry CRD identifying the unmanaged components, in this case the Object Storage.
 
 ```
 cat <<EOF >> quayregistry.yaml
@@ -174,7 +174,7 @@ podman push quay-registry-quay-domain.example.com/rhel/ubi7:7.9-1074 docker://qu
 
 ![Container images](https://github.com/jtovarro/quay-acs-demo/blob/main/images/tags.png)
 
-  12) Check the __Security scan__ dashboard, this dashboard provides with an easy access to vuelnerabilities found, their severity, and if they are fixed in the next versions.
+  12) Check the __Security scan__ dashboard, this dashboard provides with an easy access to vulnerabilities found, their severity, and if they are fixed in the next versions.
 
 ![Image vulnerabilities](https://github.com/jtovarro/quay-acs-demo/blob/main/images/vulnerabilities.png)
 
@@ -277,11 +277,11 @@ oc create -f central-instance.yaml -n stackrox
 oc get pods -n stackrox
 
 NAME                                 READY   STATUS    RESTARTS         AGE
-central-66df9d9c79-9dlcv             1/1     Running   0               5m18s
-central-db-85bb8bfbc5-7p8bl          1/1     Running   0               5m18s
-scanner-58cf565974-4ppsc             1/1     Running   0               5m18s
-scanner-58cf565974-tffh5             1/1     Running   0               5m18s
-scanner-db-68cccfc7d5-sdskp          1/1     Running   0               5m18s
+central-66df9d9c79-9dlcv             1/1     Running   0                5m18s
+central-db-85bb8bfbc5-7p8bl          1/1     Running   0                5m18s
+scanner-58cf565974-4ppsc             1/1     Running   0                5m18s
+scanner-58cf565974-tffh5             1/1     Running   0                5m18s
+scanner-db-68cccfc7d5-sdskp          1/1     Running   0                5m18s
 ```
 
   3) Once all the pods are running go to the ACS dashboard.
