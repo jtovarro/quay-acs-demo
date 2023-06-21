@@ -278,7 +278,7 @@ podman pull quay-registry-quay-quay-enterprise.apps.domain.com/cache/projectquay
 ```
 
 ```
-Trying to pull quay-registry-quay-quay-enterprise.apps.ocp-lab-4.12.12.sandbox1795.opentlc.com/cache/projectquay/clair:nightly...
+Trying to pull quay-registry-quay-quay-enterprise.apps.domain.com/cache/projectquay/clair:nightly...
 Getting image source signatures
 Copying blob f967357dba58 done  
 Copying blob d2b5f358ecf1 done  
