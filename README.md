@@ -212,7 +212,9 @@ This feature is available for Red Hat Quay v3.7 and above, it allows Quay to be 
   1) To enable this feature make sure that in the config file _conf-aws-storage.yaml_ __FEATURE_PROXY_CACHE: true__ is set to true.
 
   2) In the Red Hat Quay UI, __Create a New Organization__ and configure it as cache for another registry.
-     
+
+![New-oranization](https://github.com/jtovarro/quay-acs-demo/blob/main/images/organization.jpg)
+  
   3) Go to __Settings__, if the feature is correctly enable you will find the Proxy Cache configuration, insert the reppository you would like to have cached:
 
     - Remote Registry: quay.io
@@ -224,9 +226,15 @@ This feature is available for Red Hat Quay v3.7 and above, it allows Quay to be 
     Expiration configures the time the images will be cached, default expiration is set to 24 hours, or 86400 seconds.
     - Expiration: 86400
 
+![settings-proxy-cache](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache.jpg)
+
   Enabling proxy cache configuration means that this organization is now _read-only_, push is not allowed or create new content, you can only pull in the organization as cache.
 
   4) Go to __tags__ section and check there is no images.
+
+![tags](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-1.jpg)
+
+![tags](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-2.jpg)
 
   5) Let's pull images from the cache, use your quay domain to pull the image. 
 
