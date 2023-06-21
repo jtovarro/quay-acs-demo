@@ -295,7 +295,7 @@ Storing signatures
 89b5d8b93ca3246ba39e153d3eb38dff1f2d3708ec5563f685460d382e517799
 ```
 
-  Instead of using the quay.io/projectquay/clair:nightly image directly, you can utilize your cache repository. This cache repository will pull the container image from quay.io and cache it, making the image available in the cache registry for a specified expiration time. Every time the image is pull, the expiration time is reset.
+  Instead of using the _quay.io/projectquay/clair:nightly_ image directly, you can utilize your cache repository. This cache repository will pull the container image from quay.io and cache it, making the image available in the cache registry for a specified expiration time. Every time the image is pull, the expiration time is reset.
 
 ![image cached](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-4.jpg)
 
