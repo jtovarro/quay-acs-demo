@@ -409,8 +409,6 @@ It is possible to [configure infrastructure nodes with labels and taints manuall
 
   1) Run the following commands to get the infraestructure ID from your cluster, then change them in the machine set.
 
-- <infrastructureID>
-
 ```
 oc get -o jsonpath='{.status.infrastructureName}{"\n"}' infrastructure cluster
 ```
