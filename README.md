@@ -167,6 +167,7 @@ podman tag registry.access.redhat.com/ubi9:9.2-489 quay-registry-quay-domain.exa
   10) Push the images to the Red Hat Quay registry:
 
 ```
+podman login quay-registry-domain.example.com
 podman push quay-registry-quay-domain.example.com/rhel/ubi9:9.2-489 docker://quay-registry-domain.example.com/redhat/rhel:9.2-489 --remove-signatures --tls-verify=false
 podman push quay-registry-quay-domain.example.com/rhel/ubi7:7.9-1074 docker://quay-registry-domain.example.com/redhat/rhel:7.9-1074 --remove-signatures --tls-verify=false
 ```
@@ -269,6 +270,8 @@ oc get delete pods --all -n quay-enterprise
 ![tags](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-1.jpg)
 
   5) Let's pull images from the cache, use your quay domain to pull the image. 
+
+#### __NOTE:__ Make sure you already logged in podman with a user holding enough permissions to pull from the repository.
 
 ```
 podman pull quay-registry-quay-quay-enterprise.apps.domain.com/cache/projectquay/clair:nightly
