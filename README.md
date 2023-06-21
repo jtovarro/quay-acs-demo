@@ -214,6 +214,8 @@ This feature is available for Red Hat Quay v3.7 and above, it allows Quay to be 
   2) In the Red Hat Quay UI, __Create a New Organization__ and configure it as cache for another registry.
 
 ![New-oranization](https://github.com/jtovarro/quay-acs-demo/blob/main/images/organization.jpg)
+
+![cache organization](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache.jpg)
   
   3) Go to __Settings__, if the feature is correctly enable you will find the Proxy Cache configuration, insert the reppository you would like to have cached:
 
@@ -228,13 +230,13 @@ This feature is available for Red Hat Quay v3.7 and above, it allows Quay to be 
 
 ![settings-proxy-cache](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache.jpg)
 
+![settings-quay.io](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-2.jpg)
+
   Enabling proxy cache configuration means that this organization is now _read-only_, push is not allowed or create new content, you can only pull in the organization as cache.
 
   4) Go to __tags__ section and check there is no images.
 
 ![tags](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-1.jpg)
-
-![tags](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-2.jpg)
 
   5) Let's pull images from the cache, use your quay domain to pull the image. 
 
