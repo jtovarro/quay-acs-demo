@@ -601,7 +601,7 @@ quay-enterprise   quay-registry-quay-mirror   Deployment/quay-registry-quay-mirr
 
 [5] [Deploying Quay on infrastructure nodes](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/advanced-concepts#operator-deploy-infrastructure)
 
-[6] [Proxy Pull-tru Caching demo](https://www.youtube.com/watch?v=oVlRDuCD6ic)
+[6] [Proxy Pull-thru Caching demo](https://www.youtube.com/watch?v=oVlRDuCD6ic)
 
 ## Author
 
