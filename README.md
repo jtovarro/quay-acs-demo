@@ -211,8 +211,13 @@ Red Hat Quay allows you to mirroring from public or private repositories. Only _
 ![Operator Hub](https://github.com/jtovarro/quay-acs-demo/blob/main/images/operator-hub.jpg)
 
 - Click __install__.
+
+![ACS install config](https://github.com/jtovarro/quay-acs-demo/blob/main/images/acs-install-1.jpg)
+
 - Take a look to the config shown, use the default namespace *rhacs-operator* to install the RH Quay Operator.
 - Click __install__ again.
+
+![ACS installing](https://github.com/jtovarro/quay-acs-demo/blob/main/images/acs-install-2.jpg)
 
 Once the operator is successfuly installed _(it can take some minutes)_ create a namespace:
 
