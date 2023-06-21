@@ -217,14 +217,14 @@ This feature is available for Red Hat Quay v3.7 and above, it allows Quay to be 
   
   3) Go to __Settings__, if the feature is correctly enable you will find the Proxy Cache configuration, insert the reppository you would like to have cached:
 
-    - Remote Registry: quay.io
+  - Remote Registry: quay.io
     
-    Introduce your username and password for private repositories, in this case as it is a public repository you can skip them safely and pull the images anonymously.
-    - Remote Registry Username: your_user
-    - Remote Registry Password: your_password 
+  Introduce your username and password for private repositories, in this case as it is a public repository you can skip them safely and pull the images anonymously.
+  - Remote Registry Username: your_user
+  - Remote Registry Password: your_password 
 
-    Expiration configures the time the images will be cached, default expiration is set to 24 hours, or 86400 seconds.
-    - Expiration: 86400
+  Expiration configures the time the images will be cached, default expiration is set to 24 hours, or 86400 seconds.
+  - Expiration: 86400
 
 ![settings-proxy-cache](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache.jpg)
 
