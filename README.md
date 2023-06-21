@@ -251,12 +251,12 @@ oc get delete pods --all -n quay-enterprise
 
        - Remote Registry: quay.io
     
-  Introduce your username and password for private repositories, in this case as it is a public repository you can skip them safely and pull the images anonymously.
+     Introduce your username and password for private repositories, in this case as it is a public repository you can skip them safely and pull the images anonymously.
   
        - Remote Registry Username: your_user
        - Remote Registry Password: your_password 
 
-  Expiration configures the time the images will be cached, default expiration is set to 24 hours, or 86400 seconds.
+     Expiration configures the time the images will be cached, default expiration is set to 24 hours, or 86400 seconds.
   
        - Expiration: 86400
 
