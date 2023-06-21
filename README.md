@@ -277,11 +277,11 @@ oc create -f central-instance.yaml -n stackrox
 oc get pods -n stackrox
 
 NAME                                 READY   STATUS    RESTARTS         AGE
-central-66df9d9c79-9dlcv      1/1     Running   0          5m18s
-central-db-85bb8bfbc5-7p8bl   1/1     Running   0          5m18s
-scanner-58cf565974-4ppsc      1/1     Running   0          5m18s
-scanner-58cf565974-tffh5      1/1     Running   0          5m18s
-scanner-db-68cccfc7d5-sdskp   1/1     Running   0          5m18s
+central-66df9d9c79-9dlcv             1/1     Running   0               5m18s
+central-db-85bb8bfbc5-7p8bl          1/1     Running   0               5m18s
+scanner-58cf565974-4ppsc             1/1     Running   0               5m18s
+scanner-58cf565974-tffh5             1/1     Running   0               5m18s
+scanner-db-68cccfc7d5-sdskp          1/1     Running   0               5m18s
 ```
 
   3) Once all the pods are running go to the ACS dashboard.
