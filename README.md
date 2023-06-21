@@ -249,14 +249,14 @@ oc get delete pods --all -n quay-enterprise
   
   3) Go to __Settings__, if the feature is correctly enable you will find the Proxy Cache configuration, insert the reppository you would like to have cached:
 
-  - Remote Registry: quay.io
+       - Remote Registry: quay.io
     
   Introduce your username and password for private repositories, in this case as it is a public repository you can skip them safely and pull the images anonymously.
-  - Remote Registry Username: your_user
-  - Remote Registry Password: your_password 
+       - Remote Registry Username: your_user
+       - Remote Registry Password: your_password 
 
   Expiration configures the time the images will be cached, default expiration is set to 24 hours, or 86400 seconds.
-  - Expiration: 86400
+       - Expiration: 86400
 
 ![settings-quay.io](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-2.jpg)
 
