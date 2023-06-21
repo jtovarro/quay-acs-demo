@@ -274,7 +274,22 @@ oc get delete pods --all -n quay-enterprise
 podman pull quay-registry-quay-quay-enterprise.apps.domain.com/cache/projectquay/clair:nightly
 ```
 
+```
+Trying to pull quay-registry-quay-quay-enterprise.apps.ocp-lab-4.12.12.sandbox1795.opentlc.com/cache/projectquay/clair:nightly...
+Getting image source signatures
+Copying blob f967357dba58 done  
+Copying blob d2b5f358ecf1 done  
+Copying blob 4f4fb700ef54 done  
+Copying blob a44efdbfd478 done  
+Copying config 89b5d8b93c done  
+Writing manifest to image destination
+Storing signatures
+89b5d8b93ca3246ba39e153d3eb38dff1f2d3708ec5563f685460d382e517799
+```
+
   Instead of using the quay.io/projectquay/clair:nightly image directly, you can utilize your cache repository. This cache repository will pull the container image from quay.io and cache it, making the image available in the cache registry for a specified expiration time. Every time the image is pull, the expiration time is reset.
+
+![image cached](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-4.jpg)
 
 ## __Installing ACS__
 
