@@ -294,6 +294,10 @@ Storing signatures
 
 ![image cached](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-4.jpg)
 
+See the original container image in [quay.io/projectquay/clair:nightly](https://quay.io/repository/projectquay/clair?tab=tags).
+
+![quay.io image](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-5.jpg)
+
 ## __Installing ACS__
 
 - Click __OperatorHub__ and search for *Advanced Cluster Security* or *ACS*
