@@ -215,7 +215,7 @@ TO COMPLETE
 
 This feature is available for Red Hat Quay v3.7 and above, it allows Quay to be used as transparent cache for other external registries.
 
-  1) To enable this feature make sure that in the config file _conf-aws-storage.yaml_ __FEATURE_PROXY_CACHE: true__ is set to true.
+  1) To enable this feature make sure that in the config file _conf-aws-storage.yaml_ __FEATURE_PROXY_CACHE:__ is set to true.
 
 ```
 cat <<EOF >> conf-aws-storage-cache.yaml
