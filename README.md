@@ -211,6 +211,36 @@ This feature is available for Red Hat Quay v3.7 and above, it allows Quay to be 
 
   1) To enable this feature make sure that in the config file _conf-aws-storage.yaml_ __FEATURE_PROXY_CACHE: true__ is set to true.
 
+```
+cat <<EOF >> conf-aws-storage-cache.yaml
+FEATURE_PROXY_CACHE: true
+FEATURE_USER_INITIALIZE: true
+BROWSER_API_CALLS_XHR_ONLY: false
+SUPER_USERS:
+- quayadmin
+FEATURE_USER_CREATION: false
+## Enable the following if you want to use the new User Interface.
+## FEATURE_UI_V2: true 
+DISTRIBUTED_STORAGE_CONFIG:
+  s3Storage:
+    - S3Storage
+    - host: s3.aws_region.amazonaws.com
+      s3_access_key: your_access_key
+      s3_secret_key: your_secret_key
+      s3_bucket: your_bucket
+      storage_path: /datastorage/registry
+DISTRIBUTED_STORAGE_DEFAULT_LOCATIONS: []
+DISTRIBUTED_STORAGE_PREFERENCE:
+    - s3Storage
+EOF
+```
+
+```
+oc delete secret config-bundle-secret -n quay-enterprise
+oc create secret generic --from-file config.yaml=./conf-aws-storage-cache.yaml config-bundle-secret -n quay-enterprise
+oc get delete pods --all -n quay-enterprise
+```
+
   2) In the Red Hat Quay UI, __Create a New Organization__ and configure it as cache for another registry.
 
 ![New-oranization](https://github.com/jtovarro/quay-acs-demo/blob/main/images/organization.jpg)
@@ -227,8 +257,6 @@ This feature is available for Red Hat Quay v3.7 and above, it allows Quay to be 
 
   Expiration configures the time the images will be cached, default expiration is set to 24 hours, or 86400 seconds.
   - Expiration: 86400
-
-![settings-proxy-cache](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache.jpg)
 
 ![settings-quay.io](https://github.com/jtovarro/quay-acs-demo/blob/main/images/cache-2.jpg)
 
