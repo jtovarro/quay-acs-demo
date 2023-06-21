@@ -9,7 +9,7 @@
 - [Manage Red Hat Quay](https://github.com/jtovarro/quay-acs-demo#manage-red-hat-quay)
 - [Repository Mirroring](https://github.com/jtovarro/quay-acs-demo#repository-mirroring)
 - [Installing ACS](https://github.com/jtovarro/quay-acs-demo#installing-acs)
-- [Deploying Red Hat Quay and ACS on Infrastructure nodes](https://github.com/jtovarro/quay-acs-demo#deploying-red-hat-quay-and-acs-on-infrastructure-nodes) ##WORKING
+- [Deploying Red Hat Quay and ACS on Infrastructure nodes](https://github.com/jtovarro/quay-acs-demo#deploying-red-hat-quay-and-acs-on-infrastructure-nodes)
 - [Tips to deploy Red Hat Quay and ACS for non-production environments](https://github.com/jtovarro/quay-acs-demo#tips-to-deploy-red-hat-quay-and-acs-for-non-production-environments)
 - [References](https://github.com/jtovarro/quay-acs-demo#references)
 
@@ -399,7 +399,144 @@ sensor-758588f75f-mqtjw              1/1     Running   0          28s
 
 ### __Deploying Red Hat Quay and ACS on Infrastructure nodes__
 
-TO COMPLETE
+By default, Quay-related pods are placed on arbitrary worker nodes when using the Operator to deploy the registry. The OpenShift Container Platform documentation shows how to use machine sets to configure nodes to only host infrastructure components (see [https://docs.openshift.com/container-platform/4.13/machine_management/creating-infrastructure-machinesets.html](https://docs.openshift.com/container-platform/4.13/machine_management/creating-infrastructure-machinesets.html)).
+
+Applying a taint to the infrastructure nodes and a toleration for that taint to all infrastructure components will guarantee that only those resources will be scheduled on the Infrastructure nodes. Taints can prevent workloads that do not have a matching toleration from running on particular nodes.
+
+#### __NOTE:__ Some workloads such as daemonsets still need to be scheduled on these particular nodes. In this case, those workloads need a universal toleration.
+
+It is possible to [configure infrastructure nodes with labels and taints manually](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/advanced-concepts#operator-deploy-infrastructure), for this scenario we will be using machine sets.
+
+  1) Run the following commands to get the infraestructure ID from your cluster, then change them in the machine set.
+
+- <infrastructureID>
+
+```
+oc get -o jsonpath='{.status.infrastructureName}{"\n"}' infrastructure cluster
+```
+
+#### __NOTE:__ In a production deployment, it is recommended that you deploy at least three compute machine sets to hold infrastructure components. Each of these nodes can be deployed to different availability zones for high availability. For example, create three (3) YAML manifest infrastructure-ms-1a.yaml, infrastructure-ms-1b.yaml and infrastructure-ms-1c.yaml changing the availability zones.
+
+```
+cat <<EOF >> infrastructure-ms-1a.yaml
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  labels:
+    machine.openshift.io/cluster-api-cluster: <infrastructure_id> 
+  name: <infrastructure_id>-infra-<zone> 
+  namespace: openshift-machine-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: <infrastructure_id> 
+      machine.openshift.io/cluster-api-machineset: <infrastructure_id>-infra-<zone> 
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: <infrastructure_id> 
+        machine.openshift.io/cluster-api-machine-role: infra 
+        machine.openshift.io/cluster-api-machine-type: infra 
+        machine.openshift.io/cluster-api-machineset: <infrastructure_id>-infra-<zone> 
+    spec:
+      metadata:
+        labels:
+          node-role.kubernetes.io/infra: "" 
+      providerSpec:
+        value:
+          ami:
+            id: ami-0b2586f09f16dd949
+          apiVersion: awsproviderconfig.openshift.io/v1beta1
+          blockDevices:
+            - ebs:
+                iops: 0
+                volumeSize: 120
+                volumeType: gp2
+          credentialsSecret:
+            name: aws-cloud-credentials
+          deviceIndex: 0
+          iamInstanceProfile:
+            id: <infrastructure_id>-worker-profile 
+          instanceType: m6i.4xlarge
+          kind: AWSMachineProviderConfig
+          placement:
+            availabilityZone: <zone> 
+            region: <region> 
+          securityGroups:
+            - filters:
+                - name: tag:Name
+                  values:
+                    - <infrastructure_id>-worker-sg 
+          subnet:
+            filters:
+              - name: tag:Name
+                values:
+                  - <infrastructure_id>-private-<zone> 
+          tags:
+            - name: kubernetes.io/cluster/<infrastructure_id> 
+              value: owned
+            - name: <custom_tag_name> 
+              value: <custom_tag_value> 
+          userDataSecret:
+            name: worker-user-data
+      taints: 
+        - key: node-role.kubernetes.io/infra
+          effect: NoSchedule
+EOF
+```
+
+```
+oc create -f infrastructure-ms-1a.yaml -n openshift-machine-api
+```
+
+Once the machine sets are created, you should have three (3) new nodes with __node-role.kubernetes.io/infra: ""__ and __"node-role.kubernetes.io/worker: ""__ labels. Also these nodes will have a taint to avoid workloads to be scheduled on infra nodes. To avoid this restriction and __deploy Red Hat Quay and ACS on infra nodes__ it is possible to use taint tolerations:
+
+#### __NOTE:__ If you have already deployed Quay using the Quay Operator, remove the installed operator and any specific namespace(s) you created for the deployment.
+
+  2) Create a new project specifying a node selector and taint toleration to deploy __Red Hat Quay__ workloads on infrastructure nodes.
+
+```
+cat <<EOF >> quay-enterprise-ns.yaml
+kind: Project
+apiVersion: project.openshift.io/v1
+metadata:
+  name: quay-enterprise
+  annotations:
+    openshift.io/node-selector: 'node-role.kubernetes.io/infra='
+    scheduler.alpha.kubernetes.io/defaultTolerations: >-
+      [{"operator": "Exists", "effect": "NoSchedule", "key":
+      "node-role.kubernetes.io/infra"}
+      ]
+EOF
+```
+
+```
+oc apply -f quay-enterprise-ns.yaml
+```
+
+  Any subsequent resources created in the quay-registry namespace should now be scheduled on the dedicated infrastructure nodes.
+
+  3) Follow the same steps seen previously in [Installing Red Hat Quay using AWS S3 storage unmanaged storage](https://github.com/jtovarro/quay-acs-demo/blob/main/README.md#installing-red-hat-quay-using-aws-s3-storage-unmanaged-storage). Any subsequent resources created in the _quay-enterprise_ namespace should now be scheduled on the dedicated infrastructure nodes.
+
+  4) Create a new project specifying a node selector and taint toleration to deploy __ACS__ workloads on infrastructure nodes.
+
+```
+cat <<EOF >> quay-enterprise-ns.yaml
+kind: Project
+apiVersion: project.openshift.io/v1
+metadata:
+  name: stackrox
+  annotations:
+    openshift.io/node-selector: 'node-role.kubernetes.io/infra='
+    scheduler.alpha.kubernetes.io/defaultTolerations: >-
+      [{"operator": "Exists", "effect": "NoSchedule", "key":
+      "node-role.kubernetes.io/infra"}
+      ]
+EOF
+```
+
+  5) Follow the same steps seen previously in [Installing ACS](https://github.com/jtovarro/quay-acs-demo#installing-acs). Any subsequent resources created in the _stackrox_ namespace should now be scheduled on the dedicated infrastructure nodes.
 
 ### __Tips to deploy Red Hat Quay and ACS for non-production environments__
 
