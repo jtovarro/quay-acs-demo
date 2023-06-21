@@ -170,7 +170,7 @@ podman push quay-registry-quay-domain.example.com/rhel/ubi9:9.2-489 docker://qua
 podman push quay-registry-quay-domain.example.com/rhel/ubi7:7.9-1074 docker://quay-registry-domain.example.com/redhat/rhel:7.9-1074 --remove-signatures --tls-verify=false
 ```
 
-  11) In the __rhel__ repository in Red Hat Quay, click __Repository tags__, you will find there the two tags corresponding to the previous push command.
+  11) In the __rhel__ repository in Red Hat Quay, check __Repository tags__, you will find there the two tags corresponding to the previous push command.
 
 ![Container images](https://github.com/jtovarro/quay-acs-demo/blob/main/images/tags.png)
 
