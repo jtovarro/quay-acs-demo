@@ -405,7 +405,7 @@ Applying a taint to the infrastructure nodes and a toleration for that taint to 
 
 #### __NOTE:__ Some workloads such as daemonsets still need to be scheduled on these particular nodes. In this case, those workloads need a universal toleration.
 
-It is possible to [Manually set labels and taints on Infrastructure Nodes.](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/advanced-concepts#operator-deploy-infrastructure), for this scenario we will be using machine sets.
+It is possible to [Manually set labels and taints on Infrastructure Nodes](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/advanced-concepts#operator-deploy-infrastructure), for this scenario we will be using machine sets.
 
   1) Run the following commands to get the infraestructure ID from your cluster, then change them in the machine set.
 
