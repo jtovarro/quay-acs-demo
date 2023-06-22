@@ -235,9 +235,11 @@ Storage Quotas in Quay are applied at organization and user level and only super
 
 ![Configure quota](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-2.jpg)
 
+![Quota applied](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-3.jpg)
+
   4) Set a storage quota for _redhat_ orhanization, for example 1GB. And click __Apply__.
 
-![Quota applied](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-3.jpg)
+![Quota policies](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-4.jpg)
   
   5) Then quota policies are also available, there are two (2) type of policies: soft and hard. Set the desired policy and click __Add limit__.
 
@@ -245,11 +247,11 @@ Storage Quotas in Quay are applied at organization and user level and only super
          
        - __Hard policy__: __Reject__ action when _Quota Threshold has been exeeded, Denying push actions.
 
-![Quota policies](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-4.jpg)
+![Quota applied-2](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-5.jpg)
 
   6) Now you can check that organizations shows a quota percentage informing about the quota usage.
 
-![Quota applied-2](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-5.jpg)
+![Default quota](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-6.jpg)
 
 Also it is possible to set a __Default Quota__ that will be applied to new organizations and every existing organization that has not already a quota configured.
 
@@ -267,13 +269,15 @@ oc create secret generic --from-file config.yaml=./conf-aws-storage.yaml config-
 oc delete pods --all -n quay-enterprise
 ```
 
-![Default quota](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-6.jpg)
-
   8) Check how a quota is added to the remaining organizations without quotas.
+
+![User quotas](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-8.jpg)
+
+The same way Quotas can apply to __Users__, check how _tovar_ user has a 1 GB quota and the _quayadmin_ user has 2 GB quota.
 
 ![Default quota applied](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-7.jpg)
 
-![User quotas](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-8.jpg)
+#### __NOTE:__ Once policy Quotas are exeeded and a warning or/and reject policies apply we will get _Notifications_ in the Red Hat Quay UI dashboard.
 
 ## __Proxy Pull-thru caching__
 
