@@ -145,7 +145,7 @@ oc get route quay-registry-quay -o jsonpath={.spec.host} -n quay-enterprise
 
 ![Create a new organization](https://github.com/jtovarro/quay-acs-demo/blob/main/images/organization.jpg)
 
-  3) In this brand new organization it is possible to see: repositories, team and membership, robot accounts, default permissions, logs, applications and organization settings.
+  3) In the _Organization_ dashboard it is possible to see: repositories, team and membership, robot accounts, default permissions, logs, applications and organization settings. 
 
 ![New Organization dashboard](https://github.com/jtovarro/quay-acs-demo/blob/main/images/organization-dashboard.png)
  
