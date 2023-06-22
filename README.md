@@ -182,7 +182,7 @@ podman push quay-registry-quay-domain.example.com/rhel/ubi9:9.2-489 docker://qua
   - You can also copy images to the repository using __skopeo__ command:
 
 ```
-skopeo copy docker://registry.access.redhat.com/ubi7:7.9-1074 docker://quay-registry-quay-quay-enterprise.apps.ocp-lab-4.12.12.sandbox1795.opentlc.com/rhel/ubi9:9.2-489 --remove-signatures
+skopeo copy docker://registry.access.redhat.com/ubi7:7.9-1074 docker://quay-registry-quay-quay-enterprise.apps.ocp-lab-4.12.12.sandbox1795.opentlc.com/rhel/ubi7:7.9-1074 --remove-signatures
 ```
 
   11) In the __rhel__ repository in Red Hat Quay, check __Repository tags__, you will find there the two tags corresponding to the previous push command.
