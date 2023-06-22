@@ -746,13 +746,15 @@ quay-enterprise   quay-registry-quay-mirror   Deployment/quay-registry-quay-mirr
 
 [4] [Infrastructure Nodes in OpenShift](https://access.redhat.com/solutions/5034771)
 
-[5] [Deploying Quay on infrastructure nodes](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/advanced-concepts#operator-deploy-infrastructure)
+[5] [Creating Infrastructure MachineSets](https://docs.openshift.com/container-platform/4.13/machine_management/creating-infrastructure-machinesets.html?extIdCarryOver=true&sc_cid=701f2000001Css5AAC)
 
-[6] [Proxy Pull-thru Caching demo](https://www.youtube.com/watch?v=oVlRDuCD6ic)
+[6] [Deploying Quay on infrastructure nodes](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/deploying_the_red_hat_quay_operator_on_openshift_container_platform/advanced-concepts#operator-deploy-infrastructure)
 
-[7] [Red Hat Quay Quota management and enforcement](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/use_red_hat_quay/red-hat-quay-quota-management-and-enforcement)
+[7] [Proxy Pull-thru Caching demo](https://www.youtube.com/watch?v=oVlRDuCD6ic)
 
-[8] [Red Hat Quay Storage Quota demo](https://www.youtube.com/watch?v=EB3Z_2rrum4)
+[8] [Red Hat Quay Quota management and enforcement](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/use_red_hat_quay/red-hat-quay-quota-management-and-enforcement)
+
+[9] [Red Hat Quay Storage Quota demo](https://www.youtube.com/watch?v=EB3Z_2rrum4)
 
 ## Author
 
