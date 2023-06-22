@@ -209,11 +209,53 @@ Red Hat Quay allows you to mirroring from public or private repositories. Only _
 
 ## __Red Hat Quay Quota Management__
 
-This feature is available for Red Hat Quay v3.7 and above, and as this is a brand new feature it is not anabled by default. Once enabled we will be able to see a new column in the Red Hat Quay UI providing information repository quota consumption, also it is possible to visualize the total consumpion in an organization. 
+This feature is available for Red Hat Quay v3.7 and above, as this is a brand new feature it is not anabled by default. Once enabled we will be able to see a new column in the Red Hat Quay UI providing further information repository quota consumption, also it will be possible to visualize the total consumpion in an organization. 
 
-Storage Quotas in Quay are applied at organization level and only superusers can set quaotas, this way superusers can control and administrate growth in multitenant environments.
+  1) To enable the quaota feature make sure that in the config file _conf-aws-storage-quota.yaml_ __FEATURE_QUOTA_MANAGEMENT__ is set to true.
 
-Is possible to set a default quota that will be applied to new organizations and every existing organization that has not already a quota configured.
+```
+echo "FEATURE_QUOTA_MANAGEMENT: true" >> conf-aws-storage.yaml
+```
+
+```
+oc delete secret config-bundle-secret -n quay-enterprise
+oc create secret generic --from-file config.yaml=./conf-aws-storage.yaml config-bundle-secret -n quay-enterprise
+oc delete pods --all -n quay-enterprise
+```
+  
+Storage Quotas in Quay are applied at organization and user level and only superusers can set quaotas, this way superusers can control and administrate growth in multitenant environments.
+
+  2) Click in the __Super User Admin Panel__ once logged with the superuser admin.
+
+  3) Click __Organizations__, then __Configure Quota__ in _redhat_ organization.
+
+  4) Set a storage quota for _redhat_ orhanization, for example 1GB. And click __Apply__.
+  
+  5) Then quota policies are also available, there are two (2) type of policies: soft and hard. Set the desired policy and click __Add limit__.
+
+       - __Soft policy__: __Warning__ action allows to send notifications when the _Quota Threshold_ has been exeeded.
+         
+       - __Hard policy__: __Reject__ action when _Quota Threshold has been exeeded, Denying push actions.
+
+  6) Now you can check that organizations shows a quota percentage informing about the quota usage.
+
+Also it is possible to set a __Default Quota__ that will be applied to new organizations and every existing organization that has not already a quota configured.
+
+  7) Add the __DEFAULT_SYSTEM_REJECT_QUOTA_BYTES__ feature to the conf-aws-storage.yaml and restart Quay.
+
+#### __NOTE:__ The default quota should be provided as integer in Bytes.
+
+```
+echo "DEFAULT_SYSTEM_REJECT_QUOTA_BYTES: 10737418240" >> conf-aws-storage.yaml
+```
+
+```
+oc delete secret config-bundle-secret -n quay-enterprise
+oc create secret generic --from-file config.yaml=./conf-aws-storage.yaml config-bundle-secret -n quay-enterprise
+oc delete pods --all -n quay-enterprise
+```
+
+  8) Check how a quota is added to the remaining organizations without quotas.
 
 
 
@@ -221,36 +263,16 @@ Is possible to set a default quota that will be applied to new organizations and
 
 This feature is available for Red Hat Quay v3.7 and above, it allows Quay to be used as transparent cache for other external registries.
 
-  1) To enable this feature make sure that in the config file _conf-aws-storage.yaml_ __FEATURE_PROXY_CACHE:__ is set to true.
+  1) To enable this feature make sure that in the config file _conf-aws-storage-cache.yaml_ __FEATURE_PROXY_CACHE__ is set to true.
 
 ```
-cat <<EOF >> conf-aws-storage-cache.yaml
-FEATURE_PROXY_CACHE: true
-FEATURE_USER_INITIALIZE: true
-BROWSER_API_CALLS_XHR_ONLY: false
-SUPER_USERS:
-- quayadmin
-FEATURE_USER_CREATION: false
-## Enable the following if you want to use the new User Interface.
-## FEATURE_UI_V2: true 
-DISTRIBUTED_STORAGE_CONFIG:
-  s3Storage:
-    - S3Storage
-    - host: s3.aws_region.amazonaws.com
-      s3_access_key: your_access_key
-      s3_secret_key: your_secret_key
-      s3_bucket: your_bucket
-      storage_path: /datastorage/registry
-DISTRIBUTED_STORAGE_DEFAULT_LOCATIONS: []
-DISTRIBUTED_STORAGE_PREFERENCE:
-    - s3Storage
-EOF
+echo "FEATURE_PROXY_CACHE: true" >> conf-aws-storage-.yaml
 ```
 
 ```
 oc delete secret config-bundle-secret -n quay-enterprise
-oc create secret generic --from-file config.yaml=./conf-aws-storage-cache.yaml config-bundle-secret -n quay-enterprise
-oc get delete pods --all -n quay-enterprise
+oc create secret generic --from-file config.yaml=./conf-aws-storage.yaml config-bundle-secret -n quay-enterprise
+oc delete pods --all -n quay-enterprise
 ```
 
   2) In the Red Hat Quay UI, __Create a New Organization__ and configure it as cache for another registry.
