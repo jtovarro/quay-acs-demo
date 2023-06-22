@@ -275,9 +275,9 @@ oc delete pods --all -n quay-enterprise
 
 The same way Quotas can apply to __Users__, check how _tovar_ user has 1 GB quota and the _quayadmin_ user has 2 GB quota.
 
-![Default quota applied](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-7.jpg)
-
 #### __NOTE:__ Once policy Quotas are exeeded and a warning or/and reject policies apply we will get _Notifications_ in the Red Hat Quay UI dashboard.
+
+![Default quota applied](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-7.jpg)
 
 ## __Proxy Pull-thru caching__
 
