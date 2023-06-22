@@ -257,7 +257,7 @@ Also it is possible to set a __Default Quota__ that will be applied to new organ
 
   7) Add the __DEFAULT_SYSTEM_REJECT_QUOTA_BYTES__ feature to the conf-aws-storage.yaml and restart Quay.
 
-  #### __NOTE:__ The default quota should be provided as integer in Bytes.
+       #### __NOTE:__ The default quota should be provided as integer in Bytes.
 
 ```
 echo "DEFAULT_SYSTEM_REJECT_QUOTA_BYTES: 10737418240" >> conf-aws-storage.yaml
