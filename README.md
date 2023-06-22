@@ -222,14 +222,22 @@ oc delete secret config-bundle-secret -n quay-enterprise
 oc create secret generic --from-file config.yaml=./conf-aws-storage.yaml config-bundle-secret -n quay-enterprise
 oc delete pods --all -n quay-enterprise
 ```
+
+![Quota applied](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota.jpg)
   
 Storage Quotas in Quay are applied at organization and user level and only superusers can set quaotas, this way superusers can control and administrate growth in multitenant environments.
 
   2) Click in the __Super User Admin Panel__ once logged with the superuser admin.
 
+![Super admin panel](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-1.jpg)
+
   3) Click __Organizations__, then __Configure Quota__ in _redhat_ organization.
 
+![Configure quota](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-2.jpg)
+
   4) Set a storage quota for _redhat_ orhanization, for example 1GB. And click __Apply__.
+
+![Quota applied](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-3.jpg)
   
   5) Then quota policies are also available, there are two (2) type of policies: soft and hard. Set the desired policy and click __Add limit__.
 
@@ -237,7 +245,11 @@ Storage Quotas in Quay are applied at organization and user level and only super
          
        - __Hard policy__: __Reject__ action when _Quota Threshold has been exeeded, Denying push actions.
 
+![Quota policies](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-4.jpg)
+
   6) Now you can check that organizations shows a quota percentage informing about the quota usage.
+
+![Quota applied-2](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-5.jpg)
 
 Also it is possible to set a __Default Quota__ that will be applied to new organizations and every existing organization that has not already a quota configured.
 
@@ -255,9 +267,13 @@ oc create secret generic --from-file config.yaml=./conf-aws-storage.yaml config-
 oc delete pods --all -n quay-enterprise
 ```
 
+![Default quota](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-6.jpg)
+
   8) Check how a quota is added to the remaining organizations without quotas.
 
+![Default quota applied](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-7.jpg)
 
+![User quotas](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-8.jpg)
 
 ## __Proxy Pull-thru caching__
 
