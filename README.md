@@ -750,6 +750,10 @@ quay-enterprise   quay-registry-quay-mirror   Deployment/quay-registry-quay-mirr
 
 [6] [Proxy Pull-thru Caching demo](https://www.youtube.com/watch?v=oVlRDuCD6ic)
 
+[7] [Red Hat Quay Quota management and enforcement](https://access.redhat.com/documentation/en-us/red_hat_quay/3.8/html/use_red_hat_quay/red-hat-quay-quota-management-and-enforcement)
+
+[8] [Red Hat Quay Storage Quota demo](https://www.youtube.com/watch?v=EB3Z_2rrum4)
+
 ## Author
 
 Juan Carlos Tovar @RedHat
