@@ -179,7 +179,7 @@ podman login quay-registry-domain.example.com
 podman push quay-registry-quay-domain.example.com/rhel/ubi9:9.2-489 docker://quay-registry-domain.example.com/redhat/rhel:9.2-489 --remove-signatures --tls-verify=false
 ```
 
-    You can also copy images to the repository using __skopeo__ command:
+     You can also copy images to the repository using __skopeo__ command:
 
 ```
 skopeo copy docker://registry.access.redhat.com/ubi7:7.9-1074 docker://quay-registry-quay-quay-enterprise.apps.ocp-lab-4.12.12.sandbox1795.opentlc.com/rhel/ubi9:9.2-489 --remove-signatures
