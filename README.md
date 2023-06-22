@@ -209,7 +209,13 @@ Red Hat Quay allows you to mirroring from public or private repositories. Only _
 
 ## __Red Hat Quay Quota Management__
 
-TO COMPLETE
+This feature is available for Red Hat Quay v3.7 and above, and as this is a brand new feature it is not anabled by default. Once enabled we will be able to see a new column in the Red Hat Quay UI providing information repository quota consumption, also it is possible to visualize the total consumpion in an organization. 
+
+Storage Quotas in Quay are applied at organization level and only superusers can set quaotas, this way superusers can control and administrate growth in multitenant environments.
+
+Is possible to set a default quota that will be applied to new organizations and every existing organization that has not already a quota configured.
+
+
 
 ## __Proxy Pull-thru caching__
 
