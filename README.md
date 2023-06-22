@@ -164,13 +164,11 @@ oc get route quay-registry-quay -o jsonpath={.spec.host} -n quay-enterprise
 ![Red Hat Container images](https://github.com/jtovarro/quay-acs-demo/blob/main/images/container-image.jpg)
 
 ```
-podman pull registry.access.redhat.com/ubi7:7.9-1074
 podman pull registry.access.redhat.com/ubi9:9.2-489
 ```
 
   9) Tag the container images.
 ```
-podman tag registry.access.redhat.com/ubi7:7.9-1074 quay-registry-quay-domain.example.com/rhel/ubi7:7.9-1074
 podman tag registry.access.redhat.com/ubi9:9.2-489 quay-registry-quay-domain.example.com/rhel/ubi9:9.2-489
 ```
 
@@ -179,7 +177,12 @@ podman tag registry.access.redhat.com/ubi9:9.2-489 quay-registry-quay-domain.exa
 ```
 podman login quay-registry-domain.example.com
 podman push quay-registry-quay-domain.example.com/rhel/ubi9:9.2-489 docker://quay-registry-domain.example.com/redhat/rhel:9.2-489 --remove-signatures --tls-verify=false
-podman push quay-registry-quay-domain.example.com/rhel/ubi7:7.9-1074 docker://quay-registry-domain.example.com/redhat/rhel:7.9-1074 --remove-signatures --tls-verify=false
+```
+
+  You can also copy images to the repository using __skopeo__ command:
+
+```
+skopeo copy docker://registry.access.redhat.com/ubi7:7.9-1074 docker://quay-registry-quay-quay-enterprise.apps.ocp-lab-4.12.12.sandbox1795.opentlc.com/rhel/ubi9:9.2-489 --remove-signatures
 ```
 
   11) In the __rhel__ repository in Red Hat Quay, check __Repository tags__, you will find there the two tags corresponding to the previous push command.
