@@ -257,7 +257,7 @@ Also it is possible to set a __Default Quota__ that will be applied to new organ
 
   7) Add the __DEFAULT_SYSTEM_REJECT_QUOTA_BYTES__ feature to the conf-aws-storage.yaml and restart Quay.
 
-#### __NOTE:__ The default quota should be provided as integer in Bytes.
+  #### __NOTE:__ The default quota should be provided as integer in Bytes.
 
 ```
 echo "DEFAULT_SYSTEM_REJECT_QUOTA_BYTES: 10737418240" >> conf-aws-storage.yaml
@@ -273,7 +273,7 @@ oc delete pods --all -n quay-enterprise
 
 ![User quotas](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-8.jpg)
 
-The same way Quotas can apply to __Users__, check how _tovar_ user has a 1 GB quota and the _quayadmin_ user has 2 GB quota.
+The same way Quotas can apply to __Users__, check how _tovar_ user has 1 GB quota and the _quayadmin_ user has 2 GB quota.
 
 ![Default quota applied](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quota-7.jpg)
 
