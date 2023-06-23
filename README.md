@@ -53,7 +53,7 @@ oc new-project quay-enterprise
 ```
 
 The standard pattern for configuring unmanaged components is:
-  1) Create a config.yaml configuration file with the appropriate settings
+  1) Create a config.yaml configuration file with the appropriate settings.
 ```
 mkdir ~/quay-demo
 cd ~/quay-demo
