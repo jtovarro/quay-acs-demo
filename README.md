@@ -6,7 +6,7 @@
 - 1x AWS account with a bucket storage.
 
 ## __Table of Content__
-- [Installing Red Hat Quay using AWS S3 storage unmanaged storage](https://github.com/jtovarro/quay-acs-demo/blob/main/README.md#installing-red-hat-quay-using-aws-s3-storage-unmanaged-storage)
+- [Installing Red Hat Quay using AWS S3 unmanaged storage](https://github.com/jtovarro/quay-acs-demo/blob/main/README.md#installing-red-hat-quay-using-aws-s3-storage-unmanaged-storage)
   
 - [Manage Red Hat Quay](https://github.com/jtovarro/quay-acs-demo#manage-red-hat-quay)
   
@@ -24,7 +24,7 @@
   
 - [References](https://github.com/jtovarro/quay-acs-demo#references)
 
-## __Installing Red Hat Quay using AWS S3 storage unmanaged storage__
+## __Installing Red Hat Quay using AWS S3 unmanaged storage__
 Log in you RHOCP cluster:
 
 - Click __OperatorHub__ and search for __*Red Hat Quay*__.
