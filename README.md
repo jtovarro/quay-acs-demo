@@ -214,7 +214,7 @@ Red Hat Quay allows you to mirroring from public or private repositories. Only _
 
 ![Mirroring nginx repository](https://github.com/jtovarro/quay-acs-demo/blob/main/images/mirroring-config.jpg)
 
-  4) Click __Sync now__. Now in the __Repository Tags__ section you will start to the the new container images added mirrored from _bitnami/nginx_, with the static __Security Scan__ from _Clair_.
+  4) Click __Sync now__. Now in the __Repository Tags__ section you will start to see new container images mirrored from _bitnami/nginx_, with static __Security Scan__ from _Clair_.
 
 ![Mirrored tags](https://github.com/jtovarro/quay-acs-demo/blob/main/images/mirror-tags.png)
 
