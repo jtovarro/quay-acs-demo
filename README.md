@@ -141,6 +141,7 @@ oc get route quay-registry-quay -o jsonpath={.spec.host} -n quay-enterprise
 ![Create a user](https://github.com/jtovarro/quay-acs-demo/blob/main/images/quay-user-2.jpg)
 
   2) _quayadmin_ as superuser is allowed to create more users and organizations.
+     
     - Click __Create a New Organization__, type __redhat__ as organization name, and click __Create Organization__.
 
 ![Create a new organization](https://github.com/jtovarro/quay-acs-demo/blob/main/images/organization.jpg)
